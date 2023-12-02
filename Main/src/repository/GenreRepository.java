@@ -7,26 +7,25 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActorRepository {
+public class GenreRepository {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
-    public List<String> getActors(){
-        List<String> actors = new ArrayList<>();
+    public List<String> getGenres(){
+        List<String> genres = new ArrayList<>();
+
         try(Connection connection = databaseConnection.connect()){
             if(connection != null){
-                String query = "SELECT DISTINCT firstName, lastName from persons JOIN movie_actors ON persons.id = movie_actors.person_id;";
+                String query = "SELECT name FROM genres;";
                 try(Statement statement = connection.createStatement()){
-                    try (ResultSet resultSet = statement.executeQuery(query)){
+                    try(ResultSet resultSet = statement.executeQuery(query)){
                         while (resultSet.next()){
-                            actors.add(resultSet.getString(1) + " " + resultSet.getString(2));
+                            genres.add(resultSet.getString("name"));
                         }
                     }
                 }
             }
         }catch (SQLException e){
             e.printStackTrace();
-        }catch (NullPointerException e){
-            e.printStackTrace();
         }
-        return actors;
+        return genres;
     }
 }

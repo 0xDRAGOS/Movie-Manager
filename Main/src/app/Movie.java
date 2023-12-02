@@ -1,14 +1,13 @@
 package app;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
 public class Movie {
-    private String name;
-    private String category;
+    private String title;
+    private String genre;
     private Date launchDate;
     private float rating;
     private String actors;
@@ -16,9 +15,9 @@ public class Movie {
     private String producer;
 
     public Movie(){}
-    public Movie(String name, String category, Date launchDate, float rating, String actors, String director, String producer) {
-        this.name = name;
-        this.category = category;
+    public Movie(String title, String genre, Date launchDate, float rating, String actors, String director, String producer) {
+        this.title = title;
+        this.genre = genre;
         this.launchDate = launchDate;
         this.rating = rating;
         this.actors = actors;
@@ -27,23 +26,23 @@ public class Movie {
     }
 
     public String toString(){
-        return String.format("Nume: %s, Categorie: %s, Data Lansare: %s, Rating: %f, Actors: %s, Director: %s, Producer: %s",
-                name, category, launchDate.toString(), rating, actors, director, producer);
+        return String.format("Name: %s, Category: %s, Launch date: %s, Rating: %f, Actors: %s, Director: %s, Producer: %s",
+                title, genre, launchDate.toString(), rating, actors, director, producer);
     }
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public String getTitle() {
+        return title;
     }
 
-    public String getCategory() {
-        return category;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public Date getLaunchDate() {
@@ -93,9 +92,9 @@ public class Movie {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         System.out.println("Name: ");
-        name = console.nextLine();
+        title = console.nextLine();
         System.out.println("Category: ");
-        category = console.nextLine();
+        genre = console.nextLine();
         System.out.println("Actors: ");
         actors = console.nextLine();
         System.out.println("Director: ");
@@ -122,8 +121,8 @@ public class Movie {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         System.out.println("Movie Details:");
-        System.out.println("Name: " + name);
-        System.out.println("Category: " + category);
+        System.out.println("Name: " + title);
+        System.out.println("Genre: " + genre);
         System.out.println("Launch Date: " + dateFormat.format(launchDate));
         System.out.println("Rating: " + rating);
         System.out.println("Actors: " + actors);

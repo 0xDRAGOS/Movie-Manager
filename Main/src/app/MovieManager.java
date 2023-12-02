@@ -20,8 +20,8 @@ public class MovieManager {
     public void createRaport(String fileName){
         try(PrintWriter writer = new PrintWriter(new FileWriter(fileName))){
             List<Movie> raport = movieCollection.stream()
-                    .sorted(Comparator.comparing(Movie::getCategory)
-                        .thenComparing(Movie::getName)
+                    .sorted(Comparator.comparing(Movie::getGenre)
+                        .thenComparing(Movie::getTitle)
                             .thenComparing(Movie::getRating))
                             .collect(Collectors.toList());
         for(Movie movie : raport){

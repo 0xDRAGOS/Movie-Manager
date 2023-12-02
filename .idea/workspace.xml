@@ -5,26 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="718bafed-a7f9-44a8-ac98-1140712b32be" name="Changes" comment="add project to github">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Movie Manager.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/movie_manager_db.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Movie Manager/app/Movie.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Movie Manager/app/MovieManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Movie Manager/app/User.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Movie Manager/gui/LoginFrame.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Movie Manager/gui/LoginPanel$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Movie Manager/gui/LoginPanel.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Movie Manager/gui/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Movie Manager/gui/MainFrame.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Movie Manager/gui/TreePanel.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Movie Manager/repository/ActorRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Movie Manager/repository/DatabaseConnection.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Movie Manager/repository/MovieRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Movie Manager/repository/UserRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Main/src/gui/ActorInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Main/src/gui/Displayable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Main/src/gui/GenreInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Main/src/repository/GenreRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/app/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/app/Movie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/app/MovieManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/app/MovieManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/gui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/gui/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/gui/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/gui/TreePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/gui/TreePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/repository/ActorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/repository/ActorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/repository/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/repository/DatabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/repository/MovieRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/repository/MovieRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie_manager_db.txt" beforeDir="false" afterPath="$PROJECT_DIR$/movie_manager_db.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/app/Movie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/app/Movie.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/app/MovieManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/app/MovieManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/gui/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/gui/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/gui/MainFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/gui/TreePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/gui/TreePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/repository/ActorRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/repository/ActorRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/repository/DatabaseConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/repository/DatabaseConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/repository/MovieRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/repository/MovieRepository.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +36,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -73,6 +76,20 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Movie Manager" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -86,7 +103,7 @@
       <workItem from="1701351045278" duration="4660000" />
       <workItem from="1701446859907" duration="5654000" />
       <workItem from="1701507663896" duration="2113000" />
-      <workItem from="1701511672772" duration="237000" />
+      <workItem from="1701511672772" duration="9701000" />
     </task>
     <task id="LOCAL-00001" summary="add project to github">
       <option name="closed" value="true" />
@@ -96,7 +113,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701511448855</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add project to github">
+      <option name="closed" value="true" />
+      <created>1701512077826</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1701512077826</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
