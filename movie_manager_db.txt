@@ -1,0 +1,74 @@
+CREATE TABLE users (
+	id SERIAL PRIMARY KEY,
+	username VARCHAR(15) NOT NULL,
+	password VARCHAR(15) NOT NULL
+);
+
+CREATE TABLE movies (
+	id SERIAL PRIMARY KEY,
+	title VARCHAR(255),
+	launchDate DATE,
+	rating DECIMAL(3, 1) CHECK (rating >= 0 AND rating <= 10)
+);
+	
+CREATE TABLE genres (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(15) UNIQUE NOT NULL
+);
+
+CREATE TABLE persons (
+	id SERIAL PRIMARY KEY,
+	firstName VARCHAR(15),
+	lastName VARCHAR(15)
+);
+
+CREATE TABLE production_companies (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(255)
+);
+
+CREATE TABLE movie_genres (
+	id SERIAL PRIMARY KEY,
+	genre_id INTEGER REFERENCES genres(id) ON DELETE CASCADE,
+	movie_id INTEGER REFERENCES movies(id) ON DELETE CASCADE
+);
+
+CREATE TABLE movie_actors (
+	id SERIAL PRIMARY KEY,
+	movie_id INTEGER REFERENCES movies(id) ON DELETE CASCADE,
+	person_id INTEGER REFERENCES persons(id) ON DELETE CASCADE
+);
+
+CREATE TABLE movie_directors (
+	id SERIAL PRIMARY KEY,
+	movie_id INTEGER REFERENCES movies(id) ON DELETE CASCADE,
+	person_id INTEGER REFERENCES persons(id) ON DELETE CASCADE
+);
+
+CREATE TABLE movie_producers (
+	id SERIAL PRIMARY KEY,
+	movie_id INTEGER REFERENCES movies(id) ON DELETE CASCADE,
+	company_id INTEGER REFERENCES production_companies(id) ON DELETE CASCADE
+);
+	
+
+INSERT INTO users (username, password) VALUES ('admin', 'admin');
+
+INSERT INTO genres (name) VALUES ('Drama'), ('Action'), ('Horror');
+
+INSERT INTO persons (firstName, lastName) VALUES ('Tom', 'Hanks'), ('Meryl', 'Streep'), ('Leonardo', 'DiCaprio'), ('Julia', 'Roberts'), ('Brad', 'Pitt'), ('Angelina', 'Jolie'), ('Johnny', 'Depp'), ('Jennifer', 'Lawrence'), ('Robert', 'Downey Jr.'), ('Charlize', 'Theron'), ('Denzel', 'Washington'), ('Cate', 'Blanchett'), ('Matt', 'Damon'), ('Natalie', 'Portman'), ('George', 'Clooney'), ('Scarlett', 'Johansson'), ('Chris', 'Hemsworth'), ('Emma', 'Stone'), ('Ryan', 'Gosling'), ('Harrison', 'Ford');
+
+INSERT INTO production_companies (name) VALUES ('Warner Bros.'), ('Paramount Pictures'), ('Universal Pictures'), ('20th Century Studios'), ('Sony Pictures');
+
+INSERT INTO movies (title, launchDate, rating) VALUES ('Inception', '2010-07-16', 8.8), ('The Shawshank Redemption', '1994-09-23', 9.3), ('The Godfather', '1972-03-24', 9.2), ('Pulp Fiction', '1994-10-14', 8.9), ('The Dark Knight', '2008-07-18', 9.0), ('Schindler`s List', '1993-12-15', 8.9), ('Forrest Gump', '1994-07-06', 8.8), ('The Matrix', '1999-03-31', 8.7), ('Fight Club', '1999-10-15', 8.8), ('Titanic', '1997-12-19', 7.8);
+
+INSERT INTO persons (firstName, lastName) VALUES ('Christopher', 'Nolan'), ('Frank', 'Darabont'), ('Francis Ford', 'Coppola'), ('Quentin', 'Tarantino'), ('Steven', 'Spielberg');
+
+INSERT INTO movie_genres (genre_id, movie_id) VALUES (1, 1), (2, 2), (3, 3), (2, 4), (2, 5), (1, 6), (2, 7), (2, 8), (3, 9), (1, 10);
+
+INSERT INTO movie_actors (movie_id, person_id) VALUES (1, 3), (3, 6),  (4, 9), (5, 1), (6, 5), (7, 8), (8, 10), (9, 11), (10, 12), (1, 3), (1, 15), (1, 16), (2, 7), (2, 17), (2, 18), (3, 6), (3, 19), (3, 20), (4, 9), (4, 12), (4, 13), (5, 1), (5, 8), (5, 9), (6, 5), (6, 10), (6, 18), (7, 8), (7, 2), (7, 4), (8, 1), (8, 19), (8, 20), (9, 11), (9, 11), (9, 12), (10, 12),  (10, 7),  (10, 4); 
+
+INSERT INTO movie_directors (movie_id, person_id) VALUES (1, 1), (2, 2), (3, 3), (4, 4), (5, 1), (6, 5), (7, 8), (8, 9), (9, 13), (10, 14);
+
+INSERT INTO movie_producers (movie_id, company_id) VALUES (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 3), (7, 1), (8, 5), (9, 4), (10, 2);
+
