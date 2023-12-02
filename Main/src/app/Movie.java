@@ -29,6 +29,10 @@ public class Movie {
         return String.format("Name: %s, Category: %s, Launch date: %s, Rating: %f, Actors: %s, Director: %s, Producer: %s",
                 title, genre, launchDate.toString(), rating, actors, director, producer);
     }
+    public String[] toStringTable(){
+        String[] data = {title, genre, launchDate.toString(), String.valueOf(rating), actors, director, producer};
+        return data;
+    }
     public String getTitle() {
         return title;
     }

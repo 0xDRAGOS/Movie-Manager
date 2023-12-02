@@ -8,46 +8,73 @@ import java.awt.*;
 public class MainFrame extends JFrame {
     private TreePanel treePanel;
     private JTextArea movieDetailsTextArea;
+    private JPanel rightPanel;
+    private JTable moviesTable;
+
     public MainFrame(){
         setLayout(new BorderLayout());
+
         treePanel = new TreePanel();
         movieDetailsTextArea = new JTextArea();
+        rightPanel = new JPanel();
+        rightPanel.setLayout(new BorderLayout());
+        moviesTable = new JTable();
+
         movieDetailsTextArea.setEditable(false);
-        JSplitPane splitPane = new JSplitPane(SwingConstants.VERTICAL, treePanel, new JScrollPane(movieDetailsTextArea));
+
+        JSplitPane splitPane = new JSplitPane(SwingConstants.VERTICAL, new JScrollPane(treePanel), new JScrollPane(rightPanel));
+        splitPane.setDividerLocation(200);
         add(splitPane);
 
         treePanel.addTreeSelectionListener(e -> {
             TreePath selectedPath = treePanel.getSelectedPath();
             if(selectedPath != null){
                 DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) selectedPath.getLastPathComponent();
+                rightPanel.removeAll();
                 if (selectedNode.getUserObject() instanceof String) {
                     String nodeName = (String) selectedNode.getUserObject();
 
                     if(selectedNode.getParent() != null){
                         switch (selectedNode.getParent().toString()){
                             case "Genres":
+                                rightPanel.add(moviesTable);
                                 GenreInterface genreInterface = new GenreInterface();
-                                genreInterface.display(movieDetailsTextArea, nodeName);
+                                genreInterface.displayTable(moviesTable, nodeName);
+                                break;
+                            case "Movies":
+                                JPanel movieDetailsPlayPanel = new JPanel();
+                                MovieInterface movieInterface = new MovieInterface();
+                                movieInterface.displayButton(movieDetailsPlayPanel, nodeName);
+                                rightPanel.add(movieDetailsPlayPanel);
                                 break;
                             case "Actors":
+                                rightPanel.add(movieDetailsTextArea);
                                 ActorInterface actorInterface = new ActorInterface();
                                 actorInterface.display(movieDetailsTextArea, nodeName);
+                                break;
+                            case "Directors":
+                                rightPanel.add(movieDetailsTextArea);
+                                DirectorInterface directorInterface = new DirectorInterface();
+                                directorInterface.display(movieDetailsTextArea, nodeName);
+                                break;
+                            case "Producers":
+                                rightPanel.add(movieDetailsTextArea);
+                                ProducerInterface producerInterface = new ProducerInterface();
+                                producerInterface.display(movieDetailsTextArea, nodeName);
                                 break;
                         }
                     }
                 }
+                rightPanel.revalidate();
+                rightPanel.repaint();
             }
         });
 
+        setIconImage(new ImageIcon(getClass().getResource("/images/icon.png")).getImage());
+        setTitle("Movie Manager");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocationRelativeTo(null); //setting frame's location in the middle of the screen
+        //setLocationRelativeTo(null); //setting frame's location in the middle of the screen
         setSize(800, 600);
         setVisible(true);
-    }
-    private void displayMoviesForActor(String actorName) {
-        // Implement logic to fetch and display movies for the selected actor
-        // You can use the actorName to query the database and update the movieDetailsTextArea
-        // For now, let's just display a placeholder message
-        movieDetailsTextArea.setText("Movies for actor: " + actorName);
     }
 }

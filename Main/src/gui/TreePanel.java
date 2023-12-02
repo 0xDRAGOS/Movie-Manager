@@ -1,7 +1,6 @@
 package gui;
 
-import repository.ActorRepository;
-import repository.GenreRepository;
+import repository.*;
 
 import javax.swing.*;
 import javax.swing.event.TreeSelectionListener;
@@ -25,6 +24,15 @@ public class TreePanel extends JPanel {
         }
         root.add(genresTree);
 
+        MovieRepository movieRepository = new MovieRepository();
+        List<String> moviesName = movieRepository.getMoviesName();
+        DefaultMutableTreeNode moviesTree = new DefaultMutableTreeNode("Movies");
+        for(String item : moviesName){
+            DefaultMutableTreeNode moviesTreeChild = new DefaultMutableTreeNode(item);
+            moviesTree.add(moviesTreeChild);
+        }
+        root.add(moviesTree);
+
         ActorRepository actorRepository = new ActorRepository();
         List<String> actors = actorRepository.getActors();
         DefaultMutableTreeNode actorsTree = new DefaultMutableTreeNode("Actors");
@@ -33,6 +41,24 @@ public class TreePanel extends JPanel {
             actorsTree.add(actorsTreeChild);
         }
         root.add(actorsTree);
+
+        DirectorRepository directorRepository = new DirectorRepository();
+        List<String> directors = directorRepository.getDirectors();
+        DefaultMutableTreeNode directorsTree = new DefaultMutableTreeNode("Directors");
+        for (String item : directors){
+            DefaultMutableTreeNode directorTreeChild = new DefaultMutableTreeNode(item);
+            directorsTree.add(directorTreeChild);
+        }
+        root.add(directorsTree);
+
+        ProducerRepository producerRepository = new ProducerRepository();
+        List<String> producers = producerRepository.getProducers();
+        DefaultMutableTreeNode producersTree = new DefaultMutableTreeNode("Producers");
+        for(String item : producers){
+            DefaultMutableTreeNode producersTreeChild = new DefaultMutableTreeNode(item);
+            producersTree.add(producersTreeChild);
+        }
+        root.add(producersTree);
 
         tree = new JTree(root);
         add(tree);
