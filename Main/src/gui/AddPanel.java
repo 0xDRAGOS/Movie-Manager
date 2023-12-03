@@ -121,7 +121,7 @@ public class AddPanel extends JPanel {
                 }
 
                 int movieID = movieRepository.insertIntoDatabase(title, new java.sql.Date(launchDate.getTime()), rating);
-                System.out.println(movieID);
+
                 if (movieID != -1) {
                     // Handle actors
                     String[] actorsArray = actors.split(",\\s*");

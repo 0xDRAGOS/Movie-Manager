@@ -385,7 +385,6 @@ public class MovieRepository {
             if (connection != null) {
                 String query = "INSERT INTO movies (title, launchDate, rating) VALUES (?, ?, ?)";
                 try (PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
-                    System.out.println("Inserare film a trecut de pstm");
                     preparedStatement.setString(1, title);
                     preparedStatement.setDate(2, new java.sql.Date(launchDate.getTime()));
                     preparedStatement.setFloat(3, rating);;

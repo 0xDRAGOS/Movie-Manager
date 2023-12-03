@@ -4,25 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="718bafed-a7f9-44a8-ac98-1140712b32be" name="Changes" comment="add icon image for app;&#10;add movie trailer for Inception;&#10;add DirectorRepository &amp; ProducerRepository with get from db methods;&#10;add getMoviesName method;&#10;add getMoviesByDirectorName, getMoviesByProducer &amp; getMovieByTitle methods;&#10;add ProducerInterface, ActorInterface &amp; MovieInterface;&#10;add support to Tree for movies, directors, producers;&#10;add toStringTable method for Movie class;&#10;add displayTable method for GenreInterface class;&#10;now app displays tables for genres;&#10;add playVideo method;&#10;add displayButton method for MovieInterface;&#10;now app displays movies details and play button by selecting a movie;">
-      <change afterPath="$PROJECT_DIR$/Main/src/gui/AddFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/gui/AddPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/gui/DeleteFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/gui/DeletePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/gui/PageStartPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/repository/PersonRepository.java" afterDir="false" />
+    <list default="true" id="718bafed-a7f9-44a8-ac98-1140712b32be" name="Changes" comment="added PageStartPanel class to handle add, modify, create a movie and create raport situations;&#10;added deleteFromDatabase method for MovieRepository class;&#10;added DeleteFrame &amp; DeletePanel class;&#10;added actionListener for delete button;&#10;rework getMovieIDByTitle method;&#10;added addAll method for MovieManager;&#10;added getMovies method;&#10;added insert methods for movies, persons, genres &amp; producers;&#10;added AddFrame &amp; AddPanel with labels, fields and buttons with action listeners;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/app/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/app/Movie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/app/MovieManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/app/MovieManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/gui/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/gui/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/repository/GenreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/repository/GenreRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/src/repository/MovieRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/repository/MovieRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/repository/ProducerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/repository/ProducerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie_manager_db.txt" beforeDir="false" afterPath="$PROJECT_DIR$/movie_manager_db.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/app/Movie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/app/Movie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/app/MovieManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/app/MovieManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/gui/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/gui/MainFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/repository/MovieRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/repository/MovieRepository.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +100,7 @@
       <workItem from="1701511672772" duration="22183000" />
       <workItem from="1701534883742" duration="190000" />
       <workItem from="1701536333846" duration="1373000" />
-      <workItem from="1701598195074" duration="18524000" />
+      <workItem from="1701598195074" duration="18706000" />
     </task>
     <task id="LOCAL-00001" summary="add project to github">
       <option name="closed" value="true" />
@@ -150,7 +134,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701535000616</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added PageStartPanel class to handle add, modify, create a movie and create raport situations;&#10;added deleteFromDatabase method for MovieRepository class;&#10;added DeleteFrame &amp; DeletePanel class;&#10;added actionListener for delete button;&#10;rework getMovieIDByTitle method;&#10;added addAll method for MovieManager;&#10;added getMovies method;&#10;added insert methods for movies, persons, genres &amp; producers;&#10;added AddFrame &amp; AddPanel with labels, fields and buttons with action listeners;">
+      <option name="closed" value="true" />
+      <created>1701619512180</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1701619512180</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,7 +163,8 @@
     <MESSAGE value="add project to github" />
     <MESSAGE value="refactor loadActors;&#10;add loadDirector, loadProducer, loadGenre;&#10;add getMoviesByActorName;&#10;add addTreeSelectionListener, add getSelectedPath to handle selected node of tree;&#10;add Displayable interface with display method;&#10;add ActorInterface class to display details;&#10;add Genre node to root tree;&#10;add GenreRepository class &amp; getGenres;&#10;add GenreInterface add display method;&#10;refactor Displayable display method" />
     <MESSAGE value="add icon image for app;&#10;add movie trailer for Inception;&#10;add DirectorRepository &amp; ProducerRepository with get from db methods;&#10;add getMoviesName method;&#10;add getMoviesByDirectorName, getMoviesByProducer &amp; getMovieByTitle methods;&#10;add ProducerInterface, ActorInterface &amp; MovieInterface;&#10;add support to Tree for movies, directors, producers;&#10;add toStringTable method for Movie class;&#10;add displayTable method for GenreInterface class;&#10;now app displays tables for genres;&#10;add playVideo method;&#10;add displayButton method for MovieInterface;&#10;now app displays movies details and play button by selecting a movie;" />
-    <option name="LAST_COMMIT_MESSAGE" value="add icon image for app;&#10;add movie trailer for Inception;&#10;add DirectorRepository &amp; ProducerRepository with get from db methods;&#10;add getMoviesName method;&#10;add getMoviesByDirectorName, getMoviesByProducer &amp; getMovieByTitle methods;&#10;add ProducerInterface, ActorInterface &amp; MovieInterface;&#10;add support to Tree for movies, directors, producers;&#10;add toStringTable method for Movie class;&#10;add displayTable method for GenreInterface class;&#10;now app displays tables for genres;&#10;add playVideo method;&#10;add displayButton method for MovieInterface;&#10;now app displays movies details and play button by selecting a movie;" />
+    <MESSAGE value="added PageStartPanel class to handle add, modify, create a movie and create raport situations;&#10;added deleteFromDatabase method for MovieRepository class;&#10;added DeleteFrame &amp; DeletePanel class;&#10;added actionListener for delete button;&#10;rework getMovieIDByTitle method;&#10;added addAll method for MovieManager;&#10;added getMovies method;&#10;added insert methods for movies, persons, genres &amp; producers;&#10;added AddFrame &amp; AddPanel with labels, fields and buttons with action listeners;" />
+    <option name="LAST_COMMIT_MESSAGE" value="added PageStartPanel class to handle add, modify, create a movie and create raport situations;&#10;added deleteFromDatabase method for MovieRepository class;&#10;added DeleteFrame &amp; DeletePanel class;&#10;added actionListener for delete button;&#10;rework getMovieIDByTitle method;&#10;added addAll method for MovieManager;&#10;added getMovies method;&#10;added insert methods for movies, persons, genres &amp; producers;&#10;added AddFrame &amp; AddPanel with labels, fields and buttons with action listeners;" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
