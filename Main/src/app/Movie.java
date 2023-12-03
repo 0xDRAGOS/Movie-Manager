@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Movie {
+    private final int MAX_MOVIE_TITLE = 100;
     private String title;
     private String genre;
     private Date launchDate;

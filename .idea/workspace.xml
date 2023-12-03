@@ -5,15 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="718bafed-a7f9-44a8-ac98-1140712b32be" name="Changes" comment="add icon image for app;&#10;add movie trailer for Inception;&#10;add DirectorRepository &amp; ProducerRepository with get from db methods;&#10;add getMoviesName method;&#10;add getMoviesByDirectorName, getMoviesByProducer &amp; getMovieByTitle methods;&#10;add ProducerInterface, ActorInterface &amp; MovieInterface;&#10;add support to Tree for movies, directors, producers;&#10;add toStringTable method for Movie class;&#10;add displayTable method for GenreInterface class;&#10;now app displays tables for genres;&#10;add playVideo method;&#10;add displayButton method for MovieInterface;&#10;now app displays movies details and play button by selecting a movie;">
+      <change afterPath="$PROJECT_DIR$/Main/src/gui/AddFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Main/src/gui/AddPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Main/src/gui/DeleteFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Main/src/gui/DeletePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Main/src/gui/PageStartPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Main/src/repository/PersonRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/src/app/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/app/Movie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/gui/GenreInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/gui/GenreInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/app/MovieManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/app/MovieManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/src/gui/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/gui/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/gui/TreePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/gui/TreePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/repository/GenreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/repository/GenreRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/src/repository/MovieRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/repository/MovieRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/repository/ProducerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/repository/ProducerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie_manager_db.txt" beforeDir="false" afterPath="$PROJECT_DIR$/movie_manager_db.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/app/Movie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/app/Movie.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/app/MovieManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/app/MovieManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/gui/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/gui/MainFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/gui/TreePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/gui/TreePanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/repository/MovieRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/repository/MovieRepository.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,12 +40,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "0xDRAGOS"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;0xDRAGOS&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="eb70d41d-c82f-4efa-bf34-0d8ade398b6e" />
   </component>
@@ -60,24 +68,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/Downloads/postgresql-42.7.0.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Downloads/postgresql-42.7.0.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -106,6 +114,9 @@
       <workItem from="1701446859907" duration="5654000" />
       <workItem from="1701507663896" duration="2113000" />
       <workItem from="1701511672772" duration="22183000" />
+      <workItem from="1701534883742" duration="190000" />
+      <workItem from="1701536333846" duration="1373000" />
+      <workItem from="1701598195074" duration="18524000" />
     </task>
     <task id="LOCAL-00001" summary="add project to github">
       <option name="closed" value="true" />
@@ -131,7 +142,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701521584216</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add icon image for app;&#10;add movie trailer for Inception;&#10;add DirectorRepository &amp; ProducerRepository with get from db methods;&#10;add getMoviesName method;&#10;add getMoviesByDirectorName, getMoviesByProducer &amp; getMovieByTitle methods;&#10;add ProducerInterface, ActorInterface &amp; MovieInterface;&#10;add support to Tree for movies, directors, producers;&#10;add toStringTable method for Movie class;&#10;add displayTable method for GenreInterface class;&#10;now app displays tables for genres;&#10;add playVideo method;&#10;add displayButton method for MovieInterface;&#10;now app displays movies details and play button by selecting a movie;">
+      <option name="closed" value="true" />
+      <created>1701535000616</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1701535000616</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

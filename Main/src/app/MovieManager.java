@@ -14,10 +14,13 @@ public class MovieManager {
     public void addMovie(Movie movie){
         movieCollection.add(movie);
     }
+    public void addAll(List<Movie> movies){
+        movieCollection.addAll(movies);
+    }
     public void removeMovie(Movie movie){
         movieCollection.remove(movie);
     }
-    public void createRaport(String fileName){
+    public boolean createRaport(String fileName){
         try(PrintWriter writer = new PrintWriter(new FileWriter(fileName))){
             List<Movie> raport = movieCollection.stream()
                     .sorted(Comparator.comparing(Movie::getGenre)
@@ -26,21 +29,14 @@ public class MovieManager {
                             .collect(Collectors.toList());
         for(Movie movie : raport){
             writer.println(movie.toString());
+            writer.println("");
         }
+        writer.close();
+        return true;
         }catch (IOException e){
             e.printStackTrace();
+            return false;
         }
-    }
-
-    public static void main(String[] args) {
-        MovieManager manager = new MovieManager();
-
-        manager.addMovie(new Movie("Film1", "Actiune", new Date(2022, 1, 1), 9, "ASDASDASD", "asd", "Asd"));
-        manager.addMovie(new Movie("Film2", "Comedie", new Date(2022, 1, 1), 3, "ASDASDASD", "asd", "Asd"));
-        manager.addMovie(new Movie("Film3", "Actiune", new Date(2022, 1, 1), 4, "ASDASDASD", "asd", "Asd"));
-        manager.addMovie(new Movie("Film4", "Comedie", new Date(2022, 1, 1), 2, "ASDASDASD", "asd", "Asd"));
-
-        manager.createRaport("movie_raport.txt");
     }
 }
 

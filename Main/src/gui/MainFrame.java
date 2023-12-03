@@ -6,6 +6,7 @@ import javax.swing.tree.TreePath;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
+    private PageStartPanel pageStartPanel;
     private TreePanel treePanel;
     private JTextArea movieDetailsTextArea;
     private JPanel rightPanel;
@@ -14,6 +15,7 @@ public class MainFrame extends JFrame {
     public MainFrame(){
         setLayout(new BorderLayout());
 
+        pageStartPanel = new PageStartPanel();
         treePanel = new TreePanel();
         movieDetailsTextArea = new JTextArea();
         rightPanel = new JPanel();
@@ -21,6 +23,8 @@ public class MainFrame extends JFrame {
         moviesTable = new JTable();
 
         movieDetailsTextArea.setEditable(false);
+
+        add(pageStartPanel, BorderLayout.PAGE_START);
 
         JSplitPane splitPane = new JSplitPane(SwingConstants.VERTICAL, new JScrollPane(treePanel), new JScrollPane(rightPanel));
         splitPane.setDividerLocation(200);

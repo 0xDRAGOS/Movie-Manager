@@ -1,36 +1,18 @@
 package repository;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-public class GenreRepository {
+public class PersonRepository {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
-    public List<String> getGenres(){
-        List<String> genres = new ArrayList<>();
-
+    public int insertIntoDatabase(String lastName, String firstName){
         try(Connection connection = databaseConnection.connect()){
-            if(connection != null){
-                String query = "SELECT name FROM genres;";
-                try(Statement statement = connection.createStatement()){
-                    try(ResultSet resultSet = statement.executeQuery(query)){
-                        while (resultSet.next()){
-                            genres.add(resultSet.getString("name"));
-                        }
-                    }
-                }
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return genres;
-    }
-
-    public int insertIntoDatabase(String name){
-        try(Connection connection = databaseConnection.connect()){
-            String query = "INSERT INTO genres (name) VALUES (?)";
+            String query = "INSERT INTO persons (firstName, lastName) VALUES (?, ?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)){
-                preparedStatement.setString(1, name);
+                preparedStatement.setString(1, firstName);
+                preparedStatement.setString(2, lastName);
                 preparedStatement.executeUpdate();
                 try(ResultSet resultSet = preparedStatement.getGeneratedKeys()){
                     if(resultSet.next()){
@@ -44,12 +26,13 @@ public class GenreRepository {
         return -1;
     }
 
-    public boolean exists(String name){
+    public boolean exists(String lastName, String firstName){
         try(Connection connection = databaseConnection.connect()){
             if(connection != null){
-                String query = "SELECT * FROM genres WHERE name = ?;";
+                String query = "SELECT * FROM persons WHERE firstName = ? AND lastName = ?;";
                 try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
-                    preparedStatement.setString(1, name);
+                    preparedStatement.setString(1, firstName);
+                    preparedStatement.setString(2, lastName);
                     try(ResultSet resultSet = preparedStatement.executeQuery()){
                         if(resultSet.next()){
                             return resultSet.getInt(1) > 0;
@@ -63,12 +46,14 @@ public class GenreRepository {
         return false;
     }
 
-    public int getGenreID(String name) {
+
+    public int getPersonID(String lastName, String firstName) {
         try (Connection connection = databaseConnection.connect()) {
             if (connection != null) {
-                String query = "SELECT id FROM genres WHERE name = ?;";
+                String query = "SELECT id FROM persons WHERE firstName = ? AND lastName = ?;";
                 try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-                    preparedStatement.setString(1, name);
+                    preparedStatement.setString(1, firstName);
+                    preparedStatement.setString(2, lastName);
                     try (ResultSet resultSet = preparedStatement.executeQuery()) {
                         if (resultSet.next()) {
                             return resultSet.getInt(1);
