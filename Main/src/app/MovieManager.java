@@ -35,6 +35,7 @@ public class MovieManager {
         return true;
         }catch (IOException e){
             e.printStackTrace();
+            System.err.println("Error creating file: " + e.getMessage());
             return false;
         }
     }

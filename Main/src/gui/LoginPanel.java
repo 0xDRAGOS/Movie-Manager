@@ -13,11 +13,19 @@ public class LoginPanel extends JPanel {
     private JTextField usernameField;
     private JPasswordField passwordField;
     private JButton loginButton;
-    public LoginPanel(){
-        setLayout(new GridLayout(3, 1));
+    private JPanel loginPanel;
+    private JPanel buttonPanel;
+    private LoginFrame loginFrame;
+    public LoginPanel(LoginFrame loginFrame){
+        this.loginFrame = loginFrame;
 
-        usernameLabel = new JLabel("Username: ");
-        passwordLabel = new JLabel("Password: ");
+        setLayout(new BorderLayout());
+        loginPanel = new JPanel();
+        buttonPanel = new JPanel();
+        loginPanel.setLayout(new GridLayout(2,2));
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        usernameLabel = new JLabel("Username: ", SwingConstants.CENTER);
+        passwordLabel = new JLabel("Password: ", SwingConstants.CENTER);
         usernameField = new JTextField(15);
         passwordField = new JPasswordField(15);
         loginButton = new JButton("Login");
@@ -30,20 +38,21 @@ public class LoginPanel extends JPanel {
                 UserRepository userRep = new UserRepository();
                 if(userRep.isValid(username, password)){
                     JOptionPane.showMessageDialog(null, "Logged in successfully!");
+                    loginFrame.closeFrame();
                     MainFrame mainFrame = new MainFrame();
-                    //                    JFrame frame = new JFrame();
-//                    frame.setSize(1000, 1000);
-//                    frame.setVisible(true);
+
                 } else {
                     JOptionPane.showMessageDialog(null, "Wrong password or user!");
                 }
             }
         });
 
-        add(usernameLabel);
-        add(usernameField);
-        add(passwordLabel);
-        add(passwordField);
-        add(loginButton);
+        loginPanel.add(usernameLabel);
+        loginPanel.add(usernameField);
+        loginPanel.add(passwordLabel);
+        loginPanel.add(passwordField);
+        buttonPanel.add(loginButton);
+        add(loginPanel, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH);
     }
 }

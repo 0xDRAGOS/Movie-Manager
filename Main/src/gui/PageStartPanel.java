@@ -52,13 +52,20 @@ public class PageStartPanel extends JPanel {
             }
         });
 
+        modifyMovieButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ModifyFrame();
+            }
+        });
+
         createRaportButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 List<Movie> movieList = movieRepository.getMovies();
                 movieManager.addAll(movieList);
 
-                if(movieManager.createRaport("Raports\\movies_raport.txt")){
+                if(!movieManager.createRaport("Raports\\movies_raport.txt")){
                     JOptionPane.showMessageDialog(PageStartPanel.this, "Could not create movie raport.", "Error", JOptionPane.ERROR_MESSAGE);
                 }else{
                     JOptionPane.showMessageDialog(PageStartPanel.this, "Movie raport created successfully.", "", JOptionPane.INFORMATION_MESSAGE);

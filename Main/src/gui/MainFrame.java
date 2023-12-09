@@ -27,7 +27,7 @@ public class MainFrame extends JFrame {
         add(pageStartPanel, BorderLayout.PAGE_START);
 
         JSplitPane splitPane = new JSplitPane(SwingConstants.VERTICAL, new JScrollPane(treePanel), new JScrollPane(rightPanel));
-        splitPane.setDividerLocation(200);
+
         add(splitPane);
 
         treePanel.addTreeSelectionListener(e -> {
@@ -73,11 +73,11 @@ public class MainFrame extends JFrame {
                 rightPanel.repaint();
             }
         });
-
+        splitPane.setDividerLocation(200);
         setIconImage(new ImageIcon(getClass().getResource("/images/icon.png")).getImage());
         setTitle("Movie Manager");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        //setLocationRelativeTo(null); //setting frame's location in the middle of the screen
+        setLocationRelativeTo(null); //setting frame's location in the middle of the screen
         setSize(800, 600);
         setVisible(true);
     }

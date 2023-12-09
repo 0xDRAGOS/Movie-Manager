@@ -44,25 +44,25 @@ public class AddPanel extends JPanel {
         genreRepository = new GenreRepository();
         movieRepository = new MovieRepository();
 
-        titleLabel = new JLabel("Title:");
+        titleLabel = new JLabel("Title:", SwingConstants.CENTER);
         titleField = new JTextField();
 
-        launchDateLabel = new JLabel("Launch Date (dd/mm/yyyy):");
+        launchDateLabel = new JLabel("Launch Date (dd/mm/yyyy):", SwingConstants.CENTER);
         launchDateField = new JTextField();
 
-        ratingLabel = new JLabel("Rating:");
+        ratingLabel = new JLabel("Rating:", SwingConstants.CENTER);
         ratingField = new JTextField();
 
-        genreLabel = new JLabel("Genre:");
+        genreLabel = new JLabel("Genre:", SwingConstants.CENTER);
         genreField = new JTextField();
 
-        actorsLabel = new JLabel("Actors (actor1, actor2, actor3 etc):");
+        actorsLabel = new JLabel("Actors (actor1, actor2, actor3 etc):", SwingConstants.CENTER);
         actorsField = new JTextField();
 
-        directorLabel = new JLabel("Director:");
+        directorLabel = new JLabel("Director:", SwingConstants.CENTER);
         directorField = new JTextField();
 
-        producerLabel = new JLabel("Producer");
+        producerLabel = new JLabel("Producer", SwingConstants.CENTER);
         producerField = new JTextField();
 
         addButton = new JButton("Add");

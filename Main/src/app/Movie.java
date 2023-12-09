@@ -27,12 +27,17 @@ public class Movie {
     }
 
     public String toString(){
-        return String.format("Name: %s, Category: %s, Launch date: %s, Rating: %f, Actors: %s, Director: %s, Producer: %s",
+        return String.format("Name: %s, Category: %s, Launch date: %s, Rating: %f, Actors: %s, Director: %s, Producer: %s\n",
                 title, genre, launchDate.toString(), rating, actors, director, producer);
     }
+
+    public String toStringLine(){
+        return String.format("Name: %s \nCategory: %s \nLaunch date: %s \nRating: %f \nActors: %s \nDirector: %s \nProducer: %s\n",
+                title, genre, launchDate.toString(), rating, actors, director, producer);
+    }
+
     public String[] toStringTable(){
-        String[] data = {title, genre, launchDate.toString(), String.valueOf(rating), actors, director, producer};
-        return data;
+        return new String[]{title, genre, launchDate.toString(), String.valueOf(rating), actors, director, producer};
     }
     public String getTitle() {
         return title;

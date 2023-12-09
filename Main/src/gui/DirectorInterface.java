@@ -10,6 +10,7 @@ public class DirectorInterface implements Displayable{
     private MovieRepository movieRepository = new MovieRepository();
     public void display(JTextArea textArea, String stringCondition){
         textArea.setText("");
+        textArea.setEditable(false);
         int index = stringCondition.lastIndexOf(' ');
 
         if(index >= 0) {
@@ -18,7 +19,7 @@ public class DirectorInterface implements Displayable{
 
             List<Movie> movies = movieRepository.getMoviesByDirectorName(firstName, lastName);
             for (Movie item : movies) {
-                textArea.append(item.toString() + "\n");
+                textArea.append(item.toStringLine() + "\n");
             }
         }
     }

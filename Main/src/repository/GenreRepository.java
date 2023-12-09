@@ -81,4 +81,23 @@ public class GenreRepository {
         }
         return -1;
     }
+
+    public boolean modifyGenre(String name, String newName){
+        try(Connection connection = databaseConnection.connect()){
+            if(connection != null){
+                String query = "UPDATE genres SET name = ? WHERE name = ?;";
+                try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
+                    preparedStatement.setString(1, newName);
+                    preparedStatement.setString(2, name);
+
+                    int rowsAffected = preparedStatement.executeUpdate();
+                    return rowsAffected > 0;
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
 }

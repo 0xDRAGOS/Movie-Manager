@@ -17,17 +17,19 @@ public class MovieInterface extends Component implements Displayable{
     JTextArea textArea;
     public void display(JTextArea textArea, String stringCondition){
         textArea.setText("");
-        List<Movie> movies = movieRepository.getMovieByTitle(stringCondition);
+        textArea.setEditable(false);
+        List<Movie> movies = movieRepository.getMoviesByTitle(stringCondition);
         for (Movie item : movies) {
-            textArea.append(item.toString() + "\n");
+            textArea.append(item.toStringLine());
             }
     }
     public void displayButton(JPanel jPanel, String stringCondition){
         textArea = new JTextArea();
         textArea.setText("");
-        List<Movie> movies = movieRepository.getMovieByTitle(stringCondition);
+        textArea.setEditable(false);
+        List<Movie> movies = movieRepository.getMoviesByTitle(stringCondition);
         for (Movie item : movies) {
-            textArea.append(item.toString() + "\n");
+            textArea.append(item.toStringLine());
         }
         playButton = new JButton("Play Movie");
         playButton.addActionListener(new ActionListener() {
@@ -37,9 +39,9 @@ public class MovieInterface extends Component implements Displayable{
             }
         });
 
-        jPanel.setLayout(new BorderLayout());
-        jPanel.add(new JScrollPane(textArea), BorderLayout.CENTER);
-        jPanel.add(playButton, BorderLayout.WEST);
+        jPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        jPanel.add(new JScrollPane(textArea));
+        jPanel.add(playButton);
     }
 
     private void playMovie(String movieTitle){

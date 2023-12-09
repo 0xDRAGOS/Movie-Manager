@@ -66,4 +66,26 @@ public class PersonRepository {
         }
         return -1;
     }
+
+    public boolean modifyPerson(String lastName, String firstName, String newLastName, String newFirstName){
+        try(Connection connection = databaseConnection.connect()){
+            if(connection != null){
+                String query = "UPDATE production_companies SET lastName = ?, firstName = ? WHERE lastName = ? AND firstName = ?;";
+                try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
+                    preparedStatement.setString(1, newLastName);
+                    preparedStatement.setString(2, newFirstName);
+                    preparedStatement.setString(3, lastName);
+                    preparedStatement.setString(4, firstName);
+
+                    int rowsAffected = preparedStatement.executeUpdate();
+                    return rowsAffected > 0;
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+
 }

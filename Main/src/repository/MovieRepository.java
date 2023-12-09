@@ -26,7 +26,7 @@ public class MovieRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        actors.substring(0, actors.length() - 2);
+        actors = actors.substring(0, actors.length() - 2);
         return actors;
     }
 
@@ -158,7 +158,7 @@ public class MovieRepository {
         return movies;
     }
 
-    public List<Movie> getMovieByTitle(String movieTitle) {
+    public List<Movie> getMoviesByTitle(String movieTitle) {
         List<Movie> movies = new ArrayList<>();
         try (Connection connection = databaseConnection.connect()) {
             if (connection != null) {
@@ -185,9 +185,38 @@ public class MovieRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return movies;
     }
+
+    public Movie getMovieByTitle(String movieTitle) {
+        try (Connection connection = databaseConnection.connect()) {
+            if (connection != null) {
+                String query = "SELECT * FROM movies WHERE title = ?;";
+                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                    preparedStatement.setString(1, movieTitle);
+                    try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                        if (resultSet.next()) {
+                            Movie movie = new Movie();
+                            int movieID = resultSet.getInt("id");
+                            movie.setTitle(resultSet.getString("title"));
+                            movie.setLaunchDate(resultSet.getDate("launchDate"));
+                            movie.setRating(resultSet.getFloat("rating"));
+                            movie.setActors(loadActors(movieID));
+                            movie.setDirector(loadDirector(movieID));
+                            movie.setProducer(loadProducer(movieID));
+                            movie.setGenre(loadGenre(movieID));
+
+                            return movie;
+                        }
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;  // Return null if no movie is found
+    }
+
 
     public List<Movie> getMoviesByActorName(String firstName, String lastName) {
         List<Movie> movies = new ArrayList<>();
@@ -475,4 +504,103 @@ public class MovieRepository {
         }
         return false;
     }
+
+    public boolean modifyMovieByTitle(String movieTitle, String newMovieTitle, Date newMovieLaunchDate, Float newMovieRating){
+        try(Connection connection = databaseConnection.connect()){
+            if(connection != null){
+                String query = "UPDATE movies SET title = ?, launchDate = ?, rating = ? WHERE title = ?";
+                try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
+                    preparedStatement.setString(1, newMovieTitle);
+                    preparedStatement.setDate(2, newMovieLaunchDate);
+                    preparedStatement.setFloat(3, newMovieRating);
+                    preparedStatement.setString(4, movieTitle);
+
+                    int rowsAffected = preparedStatement.executeUpdate();
+                    return rowsAffected > 0;
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+
+    public boolean modifyActorMovie(int movieID, int personID){
+        try(Connection connection = databaseConnection.connect()){
+            if(connection != null){
+                String query = "UPDATE movie_actors SET person_id = ? WHERE movie_id = ?;";
+                try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
+                    preparedStatement.setInt(1, personID);
+                    preparedStatement.setInt(2, movieID);
+
+                    int rowsAffected = preparedStatement.executeUpdate();
+                    return rowsAffected > 0;
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+
+    public boolean modifyDirectorMovie(int movieID, int personID){
+        try(Connection connection = databaseConnection.connect()){
+            if(connection != null){
+                String query = "UPDATE movie_directors SET person_id = ? WHERE movie_id = ?;";
+                try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
+                    preparedStatement.setInt(1, personID);
+                    preparedStatement.setInt(2, movieID);
+
+                    int rowsAffected = preparedStatement.executeUpdate();
+                    return rowsAffected > 0;
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+
+    public boolean modifyGenreMovie(int movieID, int newGenreID){
+        try(Connection connection = databaseConnection.connect()){
+            if(connection != null){
+                String query = "UPDATE movie_genres SET genre_id = ? WHERE movie_id = ?;";
+                try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
+                    preparedStatement.setInt(1, newGenreID);
+                    preparedStatement.setInt(2, movieID);
+
+                    int rowsAffected = preparedStatement.executeUpdate();
+                    return rowsAffected > 0;
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+
+    public boolean modifyProducerMovie(int movieID, int producerID){
+        try(Connection connection = databaseConnection.connect()){
+            if(connection != null){
+                String query = "UPDATE movie_producers SET company_id = ? WHERE movie_id = ?;";
+                try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
+                    preparedStatement.setInt(1, producerID);
+                    preparedStatement.setInt(2, movieID);
+
+                    int rowsAffected = preparedStatement.executeUpdate();
+                    return rowsAffected > 0;
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+
+
 }
