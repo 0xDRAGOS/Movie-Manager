@@ -6,16 +6,15 @@ import javax.swing.tree.TreePath;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
-    private PageStartPanel pageStartPanel;
-    private TreePanel treePanel;
-    private JTextArea movieDetailsTextArea;
-    private JPanel rightPanel;
-    private JTable moviesTable;
+    private final TreePanel treePanel;
+    private final JTextArea movieDetailsTextArea;
+    private final JPanel rightPanel;
+    private final JTable moviesTable;
 
     public MainFrame(){
         setLayout(new BorderLayout());
 
-        pageStartPanel = new PageStartPanel();
+        PageStartPanel pageStartPanel = new PageStartPanel();
         treePanel = new TreePanel();
         movieDetailsTextArea = new JTextArea();
         rightPanel = new JPanel();

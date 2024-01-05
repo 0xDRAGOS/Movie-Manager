@@ -4,11 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ModifyFrame extends JFrame {
-    private ModifyPanel modifyPanel;
 
     public ModifyFrame(){
         setLayout(new FlowLayout());
-        modifyPanel = new ModifyPanel();
+        ModifyPanel modifyPanel = new ModifyPanel();
         add(modifyPanel);
 
         setTitle("Modify movie");

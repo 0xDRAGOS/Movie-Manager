@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import java.util.Date;
 
 public class MovieManager {
-    private List<Movie> movieCollection = new ArrayList<>();
+    private final List<Movie> movieCollection = new ArrayList<>();
     public void addMovie(Movie movie){
         movieCollection.add(movie);
     }
@@ -20,6 +20,13 @@ public class MovieManager {
     public void removeMovie(Movie movie){
         movieCollection.remove(movie);
     }
+
+    /**
+     * creates a report file containing movie information sorted by genre, title, and rating
+     *
+     * @param fileName the name of the file to be created
+     * @return true if the report file was successfully created; false otherwise
+     */
     public boolean createRaport(String fileName){
         try(PrintWriter writer = new PrintWriter(new FileWriter(fileName))){
             List<Movie> raport = movieCollection.stream()

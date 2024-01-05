@@ -15,31 +15,20 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ModifyPanel extends JPanel {
-    private MovieRepository movieRepository;
-    private GenreRepository genreRepository;
-    private PersonRepository personRepository;
-    private ProducerRepository producerRepository;
-    private JLabel movieTitleLabel;
-    private JTextField movieTitleField;
-    private JLabel newTitleLabel;
-    private JTextField newTitleField;
-    private JLabel newLaunchDateLabel;
-    private JTextField newLaunchDateField;
-    private JLabel newRatingLabel;
-    private JTextField newRatingField;
-    private JLabel newGenreLabel;
-    private JTextField newGenreField;
-    private JLabel newActorsLabel;
-    private JTextField newActorsField;
-    private JLabel newDirectorLabel;
-    private JTextField newDirectorField;
-    private JLabel newProducerLabel;
-    private JTextField newProducerField;
-    private JButton searchButton;
-    private JButton modifyButton;
-    private JPanel searchPanel;
-    private JPanel modifyPanel;
-    private JPanel modifyButtonPanel;
+    private final MovieRepository movieRepository;
+    private final GenreRepository genreRepository;
+    private final PersonRepository personRepository;
+    private final ProducerRepository producerRepository;
+    private final JTextField movieTitleField;
+    private final JTextField newTitleField;
+    private final JTextField newLaunchDateField;
+    private final JTextField newRatingField;
+    private final JTextField newGenreField;
+    private final JTextField newActorsField;
+    private final JTextField newDirectorField;
+    private final JTextField newProducerField;
+    private final JButton modifyButton;
+
     public ModifyPanel(){
         movieRepository = new MovieRepository();
         genreRepository = new GenreRepository();
@@ -48,43 +37,43 @@ public class ModifyPanel extends JPanel {
 
         setLayout(new CardLayout());
 
-        searchPanel = new JPanel();
+        JPanel searchPanel = new JPanel();
         searchPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 15));
 
-        movieTitleLabel = new JLabel("Title:");
+        JLabel movieTitleLabel = new JLabel("Title:");
         movieTitleField = new JTextField(15);
-        searchButton = new JButton("Search");
+        JButton searchButton = new JButton("Search");
 
         searchPanel.add(movieTitleLabel);
         searchPanel.add(movieTitleField);
         searchPanel.add(searchButton);
 
-        modifyPanel = new JPanel();
+        JPanel modifyPanel = new JPanel();
         modifyPanel.setLayout(new GridLayout(7, 2));
 
-        newTitleLabel = new JLabel("Title:", SwingConstants.CENTER);
+        JLabel newTitleLabel = new JLabel("Title:", SwingConstants.CENTER);
         newTitleField = new JTextField(SwingConstants.LEFT);
 
-        newLaunchDateLabel = new JLabel("Launch Date (dd/mm/yyyy):", SwingConstants.CENTER);
+        JLabel newLaunchDateLabel = new JLabel("Launch Date (dd/mm/yyyy):", SwingConstants.CENTER);
         newLaunchDateField = new JTextField(SwingConstants.LEFT);
 
-        newRatingLabel = new JLabel("Rating:", SwingConstants.CENTER);
+        JLabel newRatingLabel = new JLabel("Rating:", SwingConstants.CENTER);
         newRatingField = new JTextField(SwingConstants.LEFT);
 
-        newGenreLabel = new JLabel("Genre:", SwingConstants.CENTER);
+        JLabel newGenreLabel = new JLabel("Genre:", SwingConstants.CENTER);
         newGenreField = new JTextField(SwingConstants.LEFT);
 
-        newActorsLabel = new JLabel("Actors (actor1, actor2, actor3 etc):", SwingConstants.CENTER);
+        JLabel newActorsLabel = new JLabel("Actors (actor1, actor2, actor3 etc):", SwingConstants.CENTER);
         newActorsField = new JTextField(SwingConstants.LEFT);
 
-        newDirectorLabel = new JLabel("Director:", SwingConstants.CENTER);
+        JLabel newDirectorLabel = new JLabel("Director:", SwingConstants.CENTER);
         newDirectorField = new JTextField(SwingConstants.LEFT);
 
-        newProducerLabel = new JLabel("Producer", SwingConstants.CENTER);
+        JLabel newProducerLabel = new JLabel("Producer", SwingConstants.CENTER);
         newProducerField = new JTextField(SwingConstants.LEFT);
         modifyButton = new JButton("Modify");
 
-        modifyButtonPanel = new JPanel();
+        JPanel modifyButtonPanel = new JPanel();
         modifyButtonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
         modifyButtonPanel.add(modifyButton);

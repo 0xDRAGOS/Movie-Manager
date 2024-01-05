@@ -11,30 +11,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class AddPanel extends JPanel {
-    private MovieRepository movieRepository;
-    private GenreRepository genreRepository;
-    private PersonRepository personRepository;
-    private ProducerRepository producerRepository;
-    private JLabel titleLabel;
-    private JTextField titleField;
-    private JLabel launchDateLabel;
-    private JTextField launchDateField;
-    private JLabel ratingLabel;
-    private JTextField ratingField;
-    private JLabel genreLabel;
-    private JTextField genreField;
-    private JLabel actorsLabel;
-    private JTextField actorsField;
-    private JLabel directorLabel;
-    private JTextField directorField;
-    private JLabel producerLabel;
-    private JTextField producerField;
-    private JButton addButton;
-    private JButton resetButton;
+    private final MovieRepository movieRepository;
+    private final GenreRepository genreRepository;
+    private final PersonRepository personRepository;
+    private final ProducerRepository producerRepository;
+    private final JTextField titleField;
+    private final JTextField launchDateField;
+    private final JTextField ratingField;
+    private final JTextField genreField;
+    private final JTextField actorsField;
+    private final JTextField directorField;
+    private final JTextField producerField;
 
     public AddPanel(){
         setLayout(new GridLayout(8, 2, 10, 10)); // 4 rows, 2 columns, 10 pixels horizontal and vertical gap
@@ -44,29 +34,29 @@ public class AddPanel extends JPanel {
         genreRepository = new GenreRepository();
         movieRepository = new MovieRepository();
 
-        titleLabel = new JLabel("Title:", SwingConstants.CENTER);
+        JLabel titleLabel = new JLabel("Title:", SwingConstants.CENTER);
         titleField = new JTextField();
 
-        launchDateLabel = new JLabel("Launch Date (dd/mm/yyyy):", SwingConstants.CENTER);
+        JLabel launchDateLabel = new JLabel("Launch Date (dd/mm/yyyy):", SwingConstants.CENTER);
         launchDateField = new JTextField();
 
-        ratingLabel = new JLabel("Rating:", SwingConstants.CENTER);
+        JLabel ratingLabel = new JLabel("Rating:", SwingConstants.CENTER);
         ratingField = new JTextField();
 
-        genreLabel = new JLabel("Genre:", SwingConstants.CENTER);
+        JLabel genreLabel = new JLabel("Genre:", SwingConstants.CENTER);
         genreField = new JTextField();
 
-        actorsLabel = new JLabel("Actors (actor1, actor2, actor3 etc):", SwingConstants.CENTER);
+        JLabel actorsLabel = new JLabel("Actors (actor1, actor2, actor3 etc):", SwingConstants.CENTER);
         actorsField = new JTextField();
 
-        directorLabel = new JLabel("Director:", SwingConstants.CENTER);
+        JLabel directorLabel = new JLabel("Director:", SwingConstants.CENTER);
         directorField = new JTextField();
 
-        producerLabel = new JLabel("Producer", SwingConstants.CENTER);
+        JLabel producerLabel = new JLabel("Producer", SwingConstants.CENTER);
         producerField = new JTextField();
 
-        addButton = new JButton("Add");
-        resetButton = new JButton("Reset");
+        JButton addButton = new JButton("Add");
+        JButton resetButton = new JButton("Reset");
 
         add(titleLabel);
         add(titleField);
@@ -96,14 +86,14 @@ public class AddPanel extends JPanel {
                 String director = directorField.getText();
                 String producer = producerField.getText();
 
-                // Input validation
+                // input validation
                 if (title.isEmpty() || launchDateString.isEmpty() || ratingText.isEmpty() || genre.isEmpty()
                         || actors.isEmpty() || director.isEmpty() || producer.isEmpty()) {
                     JOptionPane.showMessageDialog(AddPanel.this, "Empty field/s.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
-                // Parse rating after validation
+                // parse rating after validation
                 float rating;
                 try {
                     rating = Float.parseFloat(ratingText);
@@ -123,7 +113,7 @@ public class AddPanel extends JPanel {
                 int movieID = movieRepository.insertIntoDatabase(title, new java.sql.Date(launchDate.getTime()), rating);
 
                 if (movieID != -1) {
-                    // Handle actors
+                    // handle actors
                     String[] actorsArray = actors.split(",\\s*");
                     for (String actor : actorsArray) {
                         int index = actor.indexOf(" ");
@@ -136,21 +126,21 @@ public class AddPanel extends JPanel {
                         movieRepository.insertMovieActorIntoDatabase(movieID, personID);
                     }
 
-                    // Handle genre
+                    // handle genre
                     if (!genreRepository.exists(genre)) {
                         genreRepository.insertIntoDatabase(genre);
                     }
                     int genreID = genreRepository.getGenreID(genre);
                     movieRepository.insertMovieGenreIntoDatabase(movieID, genreID);
 
-                    // Handle producer
+                    // handle producer
                     if (!producerRepository.exists(producer)) {
                         producerRepository.insertIntoDatabase(producer);
                     }
                     int producerID = producerRepository.getProducerID(producer);
                     movieRepository.insertMovieProducerIntoDatabase(movieID, producerID);
 
-                    // Handle director
+                    // handle director
                     int index = director.indexOf(" ");
                     String directorFirstName = director.substring(0, index);
                     String directorLastName = director.substring(index + 1);
@@ -180,5 +170,4 @@ public class AddPanel extends JPanel {
             }
         });
     }
-
 }

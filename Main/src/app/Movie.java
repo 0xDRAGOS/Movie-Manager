@@ -26,16 +26,25 @@ public class Movie {
         this.producer = producer;
     }
 
+    /**
+     * @return String of the movie information
+     */
     public String toString(){
         return String.format("Name: %s, Category: %s, Launch date: %s, Rating: %f, Actors: %s, Director: %s, Producer: %s\n",
                 title, genre, launchDate.toString(), rating, actors, director, producer);
     }
 
+    /**
+     * @return String of the movie information line by line
+     */
     public String toStringLine(){
         return String.format("Name: %s \nCategory: %s \nLaunch date: %s \nRating: %f \nActors: %s \nDirector: %s \nProducer: %s\n",
                 title, genre, launchDate.toString(), rating, actors, director, producer);
     }
 
+    /**
+     * @return String array with information in a table format
+     */
     public String[] toStringTable(){
         return new String[]{title, genre, launchDate.toString(), String.valueOf(rating), actors, director, producer};
     }
@@ -95,6 +104,9 @@ public class Movie {
         this.producer = producer;
     }
 
+    /**
+     * read a movie from keyboard (used for debugging)
+     */
     public void readMovie(){
         Date launchDate;
 
@@ -127,6 +139,9 @@ public class Movie {
         setLaunchDate(launchDate);
     }
 
+    /**
+     * display a movie from keyboard (used for debugging)
+     */
     public void displayMovie(){
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -139,10 +154,4 @@ public class Movie {
         System.out.println("Director: " + director);
         System.out.println("Producer: " + producer);
     }
-//
-//    public static void main(String[] args) {
-//        Movie movie = new Movie();
-//        movie.readMovie();
-//        movie.displayMovie();
-//    }
 }

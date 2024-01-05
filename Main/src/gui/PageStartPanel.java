@@ -13,23 +13,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PageStartPanel extends JPanel {
-    private MovieRepository movieRepository;
-    private MovieManager movieManager;
-    private JTextArea textArea;
-    private JButton addMovieButton;
-    private JButton modifyMovieButton;
-    private JButton deleteMovieButton;
-    private JButton createRaportButton;
+    private final MovieRepository movieRepository;
+    private final MovieManager movieManager;
+
     public PageStartPanel(){
         setLayout(new FlowLayout(FlowLayout.LEFT));
 
         movieRepository = new MovieRepository();
         movieManager = new MovieManager();
-        textArea = new JTextArea("Movie manager: ");
-        addMovieButton = new JButton("Add");
-        modifyMovieButton = new JButton("Modify");
-        deleteMovieButton = new JButton("Delete");
-        createRaportButton = new JButton("Create Raport");
+        JTextArea textArea = new JTextArea("Movie manager: ");
+        JButton addMovieButton = new JButton("Add");
+        JButton modifyMovieButton = new JButton("Modify");
+        JButton deleteMovieButton = new JButton("Delete");
+        JButton createRaportButton = new JButton("Create Raport");
 
         textArea.setEditable(false);
 
@@ -45,7 +41,7 @@ public class PageStartPanel extends JPanel {
         menu.add(deleteMenuItem);
         menu.add(createRaportMenuItem);
         menuBar.add(menu);
-        //add(textArea);
+
         add(menuBar);
         add(addMovieButton);
         add(modifyMovieButton);

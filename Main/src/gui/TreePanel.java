@@ -10,7 +10,7 @@ import java.awt.*;
 import java.util.List;
 
 public class TreePanel extends JPanel {
-    private JTree tree;
+    private final JTree tree;
     public TreePanel() {
         setLayout(new BorderLayout());
         DefaultMutableTreeNode root = new DefaultMutableTreeNode();
@@ -64,10 +64,18 @@ public class TreePanel extends JPanel {
         add(tree);
     }
 
+    /**
+     * adds a TreeSelectionListener to the tree component
+     *
+     * @param listener the TreeSelectionListener to be added to the tree
+     */
     public void addTreeSelectionListener(TreeSelectionListener listener){
         tree.addTreeSelectionListener(listener);
     }
 
+    /**
+     * @return the TreePath representing the selected path in the tree, or null if nothing is selected
+     */
     public TreePath getSelectedPath(){
         return tree.getSelectionPath();
     }

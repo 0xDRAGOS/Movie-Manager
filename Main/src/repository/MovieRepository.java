@@ -7,8 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MovieRepository {
-    private DatabaseConnection databaseConnection = new DatabaseConnection();
+    private final DatabaseConnection databaseConnection = new DatabaseConnection();
 
+    /**
+     * loads the actors for a given movie ID
+     *
+     * @param movieID The ID of the movie to retrieve actors for
+     * @return A string containing the names of the actors in the movie
+     */
     public String loadActors(int movieID) {
         String actors = "";
         try (Connection connection = databaseConnection.connect()) {
@@ -30,6 +36,12 @@ public class MovieRepository {
         return actors;
     }
 
+    /**
+     * loads the director for a given movie ID
+     *
+     * @param movieID The ID of the movie to retrieve the director for
+     * @return A string containing the name of the director
+     */
     public String loadDirector(int movieID) {
         String director = null;
         try (Connection connection = databaseConnection.connect()) {
@@ -50,6 +62,12 @@ public class MovieRepository {
         return director;
     }
 
+    /**
+     * loads the producer for a given movie ID
+     *
+     * @param movieID The ID of the movie to retrieve the producer for
+     * @return A string containing the name of the producer
+     */
     public String loadProducer(int movieID) {
         String producer = null;
         try (Connection connection = databaseConnection.connect()) {
@@ -70,6 +88,12 @@ public class MovieRepository {
         return producer;
     }
 
+    /**
+     * loads the genre for a given movie ID
+     *
+     * @param movieID The ID of the movie to retrieve the genre for
+     * @return A string containing the genre of the movie
+     */
     public String loadGenre(int movieID) {
         String genre = null;
         try (Connection connection = databaseConnection.connect()) {
@@ -90,6 +114,12 @@ public class MovieRepository {
         return genre;
     }
 
+    /**
+     * retrieves the movie ID based on its title
+     *
+     * @param movieTitle The title of the movie
+     * @return The ID of the movie, or -1 if not found
+     */
     public int getMovieIDByTitle(String movieTitle) {
         try (Connection connection = databaseConnection.connect()) {
             if (connection != null) {
@@ -109,6 +139,9 @@ public class MovieRepository {
         return -1;
     }
 
+    /**
+     * @return String List of movie titles
+     */
     public List<String> getMoviesName() {
         List<String> moviesName = new ArrayList<>();
         try (Connection connection = databaseConnection.connect()) {
@@ -128,6 +161,9 @@ public class MovieRepository {
         return moviesName;
     }
 
+    /**
+     * @return Movie List of all movies from the database
+     */
     public List<Movie> getMovies() {
         List<Movie> movies = new ArrayList<>();
         try (Connection connection = databaseConnection.connect()) {
@@ -158,6 +194,10 @@ public class MovieRepository {
         return movies;
     }
 
+    /**
+     * @param movieTitle the title of the movie to search for
+     * @return Movie List matching the given title, or null if not found
+     */
     public List<Movie> getMoviesByTitle(String movieTitle) {
         List<Movie> movies = new ArrayList<>();
         try (Connection connection = databaseConnection.connect()) {
@@ -188,6 +228,10 @@ public class MovieRepository {
         return movies;
     }
 
+    /**
+     * @param movieTitle the title of the movie to search for
+     * @return Movie object matching the given title, or null if not found
+     */
     public Movie getMovieByTitle(String movieTitle) {
         try (Connection connection = databaseConnection.connect()) {
             if (connection != null) {
@@ -214,10 +258,14 @@ public class MovieRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;  // Return null if no movie is found
+        return null;
     }
 
-
+    /**
+     * @param firstName The first name of the actor
+     * @param lastName  The last name of the actor
+     * @return Movie List featuring the specified actor
+     */
     public List<Movie> getMoviesByActorName(String firstName, String lastName) {
         List<Movie> movies = new ArrayList<>();
         try (Connection connection = databaseConnection.connect()) {
@@ -249,6 +297,11 @@ public class MovieRepository {
         return movies;
     }
 
+    /**
+     * @param firstName The first name of the actor
+     * @param lastName  The last name of the actor
+     * @return Movie List featuring the specified director
+     */
     public List<Movie> getMoviesByDirectorName(String firstName, String lastName) {
         List<Movie> movies = new ArrayList<>();
         try (Connection connection = databaseConnection.connect()) {
@@ -281,6 +334,10 @@ public class MovieRepository {
         return movies;
     }
 
+    /**
+     * @param genreName the name of the genre to search for movies
+     * @return Movie List featuring the specified actor
+     */
     public List<Movie> getMoviesByGenre(String genreName) {
         List<Movie> movies = new ArrayList<>();
         try (Connection connection = databaseConnection.connect()) {
@@ -311,6 +368,10 @@ public class MovieRepository {
         return movies;
     }
 
+    /**
+     * @param producerName the name of the producer to search for movies
+     * @return Movie List featuring the specified actor
+     */
     public List<Movie> getMoviesByProducer(String producerName) {
         List<Movie> movies = new ArrayList<>();
         try (Connection connection = databaseConnection.connect()) {
@@ -341,6 +402,12 @@ public class MovieRepository {
         return movies;
     }
 
+    /**
+     * deletes a movie from the database based on its title
+     *
+     * @param movieTitle the title of the movie to be deleted
+     * @return true if the movie was successfully deleted, otherwise false
+     */
     public boolean deleteFromDatabase(String movieTitle) {
         try (Connection connection = databaseConnection.connect()) {
             if (connection != null) {
@@ -409,6 +476,14 @@ public class MovieRepository {
         return false;
     }
 
+    /**
+     * inserts a new movie entry into the database
+     *
+     * @param title      the title of the new movie
+     * @param launchDate the launch date of the new movie
+     * @param rating     the rating of the new movie
+     * @return the ID of the inserted movie or -1 if insertion fails
+     */
     public int insertIntoDatabase(String title, Date launchDate, float rating) {
         try (Connection connection = databaseConnection.connect()) {
             if (connection != null) {
@@ -433,6 +508,13 @@ public class MovieRepository {
         return -1;
     }
 
+    /**
+     * inserts a record into the database indicating a new actor for a specific movie
+     *
+     * @param movieID  the ID of the movie associated with the new actor
+     * @param personID the ID of the actor to be added to the movie
+     * @return true if the actor was successfully inserted for the movie; otherwise false
+     */
     public boolean insertMovieActorIntoDatabase(int movieID, int personID){
         try(Connection connection = databaseConnection.connect()){
             if(connection != null){
@@ -451,6 +533,13 @@ public class MovieRepository {
         return false;
     }
 
+    /**
+     * inserts a record into the database indicating a new genre for a specific movie
+     *
+     * @param movieID the ID of the movie associated with the new genre
+     * @param genreID the ID of the genre to be added to the movie
+     * @return true if the genre was successfully inserted for the movie; otherwise false
+     */
     public boolean insertMovieGenreIntoDatabase(int movieID, int genreID){
         try(Connection connection = databaseConnection.connect()){
             if(connection != null){
@@ -469,6 +558,13 @@ public class MovieRepository {
         return false;
     }
 
+    /**
+     * inserts a record into the database indicating a new director for a specific movie
+     *
+     * @param movieID  the ID of the movie associated with the new director
+     * @param personID the ID of the director to be added to the movie
+     * @return true if the director was successfully inserted for the movie; otherwise false
+     */
     public boolean insertMovieDirectorIntoDatabase(int movieID, int personID){
         try(Connection connection = databaseConnection.connect()){
             if(connection != null){
@@ -487,6 +583,13 @@ public class MovieRepository {
         return false;
     }
 
+    /**
+     * inserts a record into the database indicating a new producer for a specific movie
+     *
+     * @param movieID    the ID of the movie associated with the new producer
+     * @param producerID the ID of the producer to be added to the movie
+     * @return true if the producer was successfully inserted for the movie; otherwise false
+     */
     public boolean insertMovieProducerIntoDatabase(int movieID, int producerID){
         try(Connection connection = databaseConnection.connect()){
             if(connection != null){
@@ -505,6 +608,15 @@ public class MovieRepository {
         return false;
     }
 
+    /**
+     * modifies a movie's details based on its title
+     *
+     * @param movieTitle       the title of the movie to be modified
+     * @param newMovieTitle    the updated title for the movie
+     * @param newMovieLaunchDate the updated launch date for the movie
+     * @param newMovieRating   the updated rating for the movie
+     * @return true if the movie details were successfully modified; otherwise false
+     */
     public boolean modifyMovieByTitle(String movieTitle, String newMovieTitle, Date newMovieLaunchDate, Float newMovieRating){
         try(Connection connection = databaseConnection.connect()){
             if(connection != null){
@@ -526,6 +638,13 @@ public class MovieRepository {
         return false;
     }
 
+    /**
+     * modifies an actor associated with a specific movie
+     *
+     * @param movieID  the ID of the movie to which the actor is linked
+     * @param personID the ID of the new actor to be associated with the movie
+     * @return true if the modification was successful; otherwise false
+     */
     public boolean modifyActorMovie(int movieID, int personID){
         try(Connection connection = databaseConnection.connect()){
             if(connection != null){
@@ -545,6 +664,13 @@ public class MovieRepository {
         return false;
     }
 
+    /**
+     * modifies a director associated with a specific movie
+     *
+     * @param movieID  the ID of the movie to which the director is linked
+     * @param personID the ID of the new director to be associated with the movie
+     * @return true if the modification was successful; otherwise false
+     */
     public boolean modifyDirectorMovie(int movieID, int personID){
         try(Connection connection = databaseConnection.connect()){
             if(connection != null){
@@ -564,6 +690,13 @@ public class MovieRepository {
         return false;
     }
 
+    /**
+     * modifies the genre of a specific movie
+     *
+     * @param movieID    the ID of the movie whose genre is to be updated
+     * @param newGenreID the ID of the new genre to associate with the movie
+     * @return true if the modification was successful; otherwise false
+     */
     public boolean modifyGenreMovie(int movieID, int newGenreID){
         try(Connection connection = databaseConnection.connect()){
             if(connection != null){
@@ -583,6 +716,13 @@ public class MovieRepository {
         return false;
     }
 
+    /**
+     * modifies the producer associated with a specific movie
+     *
+     * @param movieID    the ID of the movie to which the producer is linked
+     * @param producerID the ID of the new producer to be associated with the movie
+     * @return true if the modification was successful; otherwise false
+     */
     public boolean modifyProducerMovie(int movieID, int producerID){
         try(Connection connection = databaseConnection.connect()){
             if(connection != null){
@@ -601,6 +741,4 @@ public class MovieRepository {
         }
         return false;
     }
-
-
 }

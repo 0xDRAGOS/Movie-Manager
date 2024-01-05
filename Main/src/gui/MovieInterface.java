@@ -12,9 +12,16 @@ import java.io.IOException;
 import java.util.List;
 
 public class MovieInterface extends Component implements Displayable{
-    private MovieRepository movieRepository = new MovieRepository();
+    private final MovieRepository movieRepository = new MovieRepository();
     JButton playButton;
     JTextArea textArea;
+
+    /**
+     * displays movie information in the provided JTextArea based on a given title
+     *
+     * @param textArea the JTextArea where movie information will be displayed
+     * @param stringCondition the title used to filter and display movie information
+     */
     public void display(JTextArea textArea, String stringCondition){
         textArea.setText("");
         textArea.setEditable(false);
@@ -23,6 +30,13 @@ public class MovieInterface extends Component implements Displayable{
             textArea.append(item.toStringLine());
             }
     }
+
+    /**
+     * displays movie information along with a 'Play Movie' button in the provided JPanel based on a given title
+     *
+     * @param jPanel the JPanel where movie information and 'Play Movie' button will be displayed
+     * @param stringCondition the title used to filter and display movie information
+     */
     public void displayButton(JPanel jPanel, String stringCondition){
         textArea = new JTextArea();
         textArea.setText("");
@@ -44,11 +58,15 @@ public class MovieInterface extends Component implements Displayable{
         jPanel.add(playButton);
     }
 
+    /**
+     * open the movie file corresponding to the given movie title.
+     *
+     * @param movieTitle the title of the movie whose file will be opened
+     */
     private void playMovie(String movieTitle){
         String path = "Main/src/movies/" + movieTitle + ".mp4";
-        System.out.println(path);
         File movieFile = new File(path);
-        System.out.println("File path: " + movieFile.getAbsolutePath());
+
         if(movieFile.exists()){
             try{
                 Desktop.getDesktop().open(movieFile);

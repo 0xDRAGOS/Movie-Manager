@@ -8,7 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DirectorRepository {
-    private DatabaseConnection databaseConnection = new DatabaseConnection();
+    private final DatabaseConnection databaseConnection = new DatabaseConnection();
+
+    /**
+     * @return a List of String representing the full names of distinct directors
+     */
     public List<String> getDirectors(){
         List<String> directors = new ArrayList<>();
         try(Connection connection = databaseConnection.connect()){

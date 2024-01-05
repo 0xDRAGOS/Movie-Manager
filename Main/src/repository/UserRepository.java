@@ -6,7 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserRepository{
-    private DatabaseConnection dbCon = new DatabaseConnection();
+    private final DatabaseConnection dbCon = new DatabaseConnection();
+
+    /**
+     * validates a user by checking if the provided username and password match any records in the database
+     *
+     * @param username the username of the user to validate
+     * @param password the password of the user to validate
+     * @return true if the provided username and password match a record in the database; false otherwise
+     */
     public boolean isValid(String username, String password) {
         Connection con = dbCon.connect();
         if (con != null) {

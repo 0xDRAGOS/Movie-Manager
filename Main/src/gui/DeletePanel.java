@@ -8,17 +8,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DeletePanel extends JPanel {
-    private MovieRepository movieRepository;
-    private JLabel movieTitleLabel;
-    private JTextField movieTitleField;
-    private JButton deleteButton;
+    private final MovieRepository movieRepository;
+    private final JTextField movieTitleField;
+
     public DeletePanel(){
-        setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10)); // Aliniere centrală și adăugare spațiu între componente
+        setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
         movieRepository = new MovieRepository();
-        movieTitleField = new JTextField(15); // Setează o lățime predefinită
-        movieTitleLabel = new JLabel("Enter title:");
-        deleteButton = new JButton("Delete");
+        movieTitleField = new JTextField(15);
+        JLabel movieTitleLabel = new JLabel("Enter title:");
+        JButton deleteButton = new JButton("Delete");
 
         add(movieTitleLabel);
         add(movieTitleField);

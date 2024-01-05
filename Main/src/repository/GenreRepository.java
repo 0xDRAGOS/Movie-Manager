@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GenreRepository {
-    private DatabaseConnection databaseConnection = new DatabaseConnection();
+    private final DatabaseConnection databaseConnection = new DatabaseConnection();
+
+    /**
+     * @return a List of String representing genres
+     */
     public List<String> getGenres(){
         List<String> genres = new ArrayList<>();
 
@@ -26,7 +30,12 @@ public class GenreRepository {
         return genres;
     }
 
-    public int insertIntoDatabase(String name){
+    /**
+     * inserts a new genre into the database
+     *
+     * @param name the name of the genre to be inserted
+     */
+    public void insertIntoDatabase(String name){
         try(Connection connection = databaseConnection.connect()){
             String query = "INSERT INTO genres (name) VALUES (?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)){
@@ -34,16 +43,21 @@ public class GenreRepository {
                 preparedStatement.executeUpdate();
                 try(ResultSet resultSet = preparedStatement.getGeneratedKeys()){
                     if(resultSet.next()){
-                        return resultSet.getInt(1);
+                        resultSet.getInt(1);
                     }
                 }
             }
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return -1;
     }
 
+    /**
+     * checks if a genre with the given name exists in the database
+     *
+     * @param name the name of the genre to check for existence
+     * @return true if the genre exists in the database; false otherwise
+     */
     public boolean exists(String name){
         try(Connection connection = databaseConnection.connect()){
             if(connection != null){
@@ -63,6 +77,10 @@ public class GenreRepository {
         return false;
     }
 
+    /**
+     * @param name the name of the genre to retrieve the ID for
+     * @return the ID of the genre; returns -1 if the genre is not found
+     */
     public int getGenreID(String name) {
         try (Connection connection = databaseConnection.connect()) {
             if (connection != null) {
@@ -82,6 +100,13 @@ public class GenreRepository {
         return -1;
     }
 
+    /**
+     * modifies the name of a genre in the database
+     *
+     * @param name    the current name of the genre
+     * @param newName the new name to set for the genre
+     * @return true if the modification was successful; false otherwise
+     */
     public boolean modifyGenre(String name, String newName){
         try(Connection connection = databaseConnection.connect()){
             if(connection != null){

@@ -7,7 +7,13 @@ import javax.swing.*;
 import java.util.List;
 
 public class DirectorInterface implements Displayable{
-    private MovieRepository movieRepository = new MovieRepository();
+    private final MovieRepository movieRepository = new MovieRepository();
+    /**
+     * displays director information in the provided JTextArea based on a given string condition
+     *
+     * @param textArea the JTextArea where movie information will be displayed
+     * @param stringCondition the condition used to filter and display movie information
+     */
     public void display(JTextArea textArea, String stringCondition){
         textArea.setText("");
         textArea.setEditable(false);

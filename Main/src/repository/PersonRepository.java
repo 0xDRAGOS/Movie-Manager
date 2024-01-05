@@ -6,7 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PersonRepository {
-    private DatabaseConnection databaseConnection = new DatabaseConnection();
+    private final DatabaseConnection databaseConnection = new DatabaseConnection();
+
+    /**
+     * inserts a new person into the database
+     *
+     * @param lastName  the last name of the person to be inserted
+     * @param firstName the first name of the person to be inserted
+     * @return the ID of the newly inserted person; returns -1 if insertion fails
+     */
     public int insertIntoDatabase(String lastName, String firstName){
         try(Connection connection = databaseConnection.connect()){
             String query = "INSERT INTO persons (firstName, lastName) VALUES (?, ?)";
@@ -26,6 +34,13 @@ public class PersonRepository {
         return -1;
     }
 
+    /**
+     * checks if a person with the given first and last name exists in the database
+     *
+     * @param lastName  the last name of the person to check for existence
+     * @param firstName the first name of the person to check for existence
+     * @return true if the person exists in the database; false otherwise
+     */
     public boolean exists(String lastName, String firstName){
         try(Connection connection = databaseConnection.connect()){
             if(connection != null){
@@ -46,7 +61,11 @@ public class PersonRepository {
         return false;
     }
 
-
+    /**
+     * @param lastName  the last name of the person to retrieve the ID for
+     * @param firstName the first name of the person to retrieve the ID for
+     * @return the ID of the person; returns -1 if the person is not found
+     */
     public int getPersonID(String lastName, String firstName) {
         try (Connection connection = databaseConnection.connect()) {
             if (connection != null) {
@@ -67,6 +86,15 @@ public class PersonRepository {
         return -1;
     }
 
+    /**
+     * modifies the first and last names of a person in the database
+     *
+     * @param lastName     the current last name of the person
+     * @param firstName    the current first name of the person
+     * @param newLastName  the new last name to set for the person
+     * @param newFirstName the new first name to set for the person
+     * @return true if the modification was successful; false otherwise
+     */
     public boolean modifyPerson(String lastName, String firstName, String newLastName, String newFirstName){
         try(Connection connection = databaseConnection.connect()){
             if(connection != null){

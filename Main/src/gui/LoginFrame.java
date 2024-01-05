@@ -3,11 +3,10 @@ package gui;
 import javax.swing.*;
 
 public class LoginFrame extends JFrame {
-    private LoginPanel loginPanel;
     public LoginFrame(){
         super("Login");
 
-        loginPanel = new LoginPanel(this);
+        LoginPanel loginPanel = new LoginPanel(this);
         add(loginPanel);
 
         setIconImage(new ImageIcon(getClass().getResource("/images/icon.png")).getImage());
@@ -18,6 +17,9 @@ public class LoginFrame extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * closes the frame by setting its visibility to false and disposing of it
+     */
     public void closeFrame() {
         setVisible(false);
         dispose();

@@ -8,7 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ActorRepository {
-    private DatabaseConnection databaseConnection = new DatabaseConnection();
+    private final DatabaseConnection databaseConnection = new DatabaseConnection();
+
+    /**
+     * @return a List of String representing the full names of distinct actors
+     */
     public List<String> getActors(){
         List<String> actors = new ArrayList<>();
         try(Connection connection = databaseConnection.connect()){

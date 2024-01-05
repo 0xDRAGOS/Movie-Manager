@@ -4,10 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class DeleteFrame extends JFrame {
-    private DeletePanel deletePanel;
     public DeleteFrame() {
         setLayout(new FlowLayout());
-        deletePanel = new DeletePanel();
+        DeletePanel deletePanel = new DeletePanel();
         add(deletePanel);
 
         setTitle("Delete movie");

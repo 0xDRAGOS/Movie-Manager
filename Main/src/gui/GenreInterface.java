@@ -10,6 +10,13 @@ import java.util.List;
 
 public class GenreInterface implements Displayable{
     MovieRepository movieRepository = new MovieRepository();
+
+    /**
+     * displays movie information in the provided JTextArea based on a given genre
+     *
+     * @param textArea the JTextArea where movie information will be displayed
+     * @param stringCondition the genre used to filter and display movie information
+     */
     @Override
     public void display(JTextArea textArea, String stringCondition) {
         textArea.setText("");
@@ -18,33 +25,13 @@ public class GenreInterface implements Displayable{
                 textArea.append(item.toString() + "\n");
             }
     }
-//    public void displayTable(JTextArea textArea, String stringCondition){
-//        textArea.setText("");
-//        JTable moviesTable = new JTable();
-//        DefaultTableModel tableModel = new DefaultTableModel();
-//        moviesTable.setDefaultEditor(Object.class, null);
-//        String[] columnNames = {"Title", "Genre", "Launch date", "Rating", "Actors", "Director", "Producer"};
-//        tableModel.setColumnIdentifiers(columnNames);
-//        List<Movie> movies = movieRepository.getMoviesByGenre(stringCondition);
-//        for (Movie item : movies) {
-//            tableModel.addRow(item.toStringTable());
-//        }
-//
-//        moviesTable.setModel(tableModel);
-//
-//        JPanel panel = new JPanel(new BorderLayout());
-//        panel.add(new JScrollPane(moviesTable), BorderLayout.CENTER);
-//        panel.add(textArea, BorderLayout.NORTH);
-//
-//        JFrame frame = new JFrame("Movies");
-//        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//        frame.setLayout(new BorderLayout());
-//        frame.add(panel, BorderLayout.CENTER);
-//        frame.setSize(400, 300);
-//        frame.setLocationRelativeTo(null);
-//        frame.setVisible(true);
-//    }
 
+    /**
+     * displays movie information in the provided JTable based on a given genre
+     *
+     * @param moviesTable the JTable where movie information will be displayed
+     * @param stringCondition the genre used to filter and display movie information
+     */
     public void displayTable(JTable moviesTable, String stringCondition){
         DefaultTableModel tableModel = new DefaultTableModel();
         moviesTable.setDefaultEditor(Object.class, null);

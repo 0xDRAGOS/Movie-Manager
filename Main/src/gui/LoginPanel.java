@@ -8,27 +8,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LoginPanel extends JPanel {
-    private JLabel usernameLabel;
-    private JLabel passwordLabel;
-    private JTextField usernameField;
-    private JPasswordField passwordField;
-    private JButton loginButton;
-    private JPanel loginPanel;
-    private JPanel buttonPanel;
-    private LoginFrame loginFrame;
+    private final JTextField usernameField;
+    private final JPasswordField passwordField;
+
     public LoginPanel(LoginFrame loginFrame){
-        this.loginFrame = loginFrame;
 
         setLayout(new BorderLayout());
-        loginPanel = new JPanel();
-        buttonPanel = new JPanel();
+        JPanel loginPanel = new JPanel();
+        JPanel buttonPanel = new JPanel();
         loginPanel.setLayout(new GridLayout(2,2));
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        usernameLabel = new JLabel("Username: ", SwingConstants.CENTER);
-        passwordLabel = new JLabel("Password: ", SwingConstants.CENTER);
+        JLabel usernameLabel = new JLabel("Username: ", SwingConstants.CENTER);
+        JLabel passwordLabel = new JLabel("Password: ", SwingConstants.CENTER);
         usernameField = new JTextField(15);
         passwordField = new JPasswordField(15);
-        loginButton = new JButton("Login");
+        JButton loginButton = new JButton("Login");
 
         loginButton.addActionListener(new ActionListener() {
             @Override

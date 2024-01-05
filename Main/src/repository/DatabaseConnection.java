@@ -8,6 +8,12 @@ public class DatabaseConnection{
     private final String url = "jdbc:postgresql://localhost:5432/movie_manager";
     private final String user = "postgres";
     private final String password = "1234";
+
+    /**
+     * establishes a connection to the database using the provided URL, username, and password
+     *
+     * @return a Connection object representing the database connection; returns null if the connection fails
+     */
     public Connection connect(){
         Connection conn = null;
         try{
@@ -18,9 +24,4 @@ public class DatabaseConnection{
         }
         return conn;
     }
-    public static void main(String[] args) {
-        DatabaseConnection dbcon = new DatabaseConnection();
-        dbcon.connect();
-    }
 }
-
