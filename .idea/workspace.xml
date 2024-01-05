@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="8" />
+    <option name="CUSTOM_SCOPE_NAME" value="Selected files" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="718bafed-a7f9-44a8-ac98-1140712b32be" name="Changes" comment="deleted debugging prints;">
-      <change afterPath="$PROJECT_DIR$/Main/src/gui/ModifyFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main/src/gui/ModifyPanel.java" afterDir="false" />
+    <list default="true" id="718bafed-a7f9-44a8-ac98-1140712b32be" name="Changes" comment="implement modify button with specific methods;&#10;rework login frame;&#10;add toStringLine to print line by line movie parameters;">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/movie_raport.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/movie_raport.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/app/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/app/Movie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/app/MovieManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/app/MovieManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/gui/ActorInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/gui/ActorInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/gui/AddPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/gui/AddPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/gui/DirectorInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/gui/DirectorInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/gui/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/gui/LoginFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/gui/LoginPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/gui/LoginPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/gui/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/gui/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/gui/MovieInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/gui/MovieInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/src/gui/PageStartPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/gui/PageStartPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/gui/ProducerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/gui/ProducerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/repository/GenreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/repository/GenreRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/repository/MovieRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/repository/MovieRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/repository/PersonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/repository/PersonRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/src/repository/ProducerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/repository/ProducerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/app/MovieManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/app/MovieManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/gui/MovieInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/gui/MovieInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/repository/MovieRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/repository/MovieRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Movie Manager.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Movie Manager.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/app/Movie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/app/Movie.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/gui/ActorInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/gui/ActorInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/gui/DirectorInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/gui/DirectorInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/gui/LoginFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/gui/LoginFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/gui/LoginPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/gui/LoginPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/gui/LoginPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/gui/LoginPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/gui/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/gui/MainFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/gui/ProducerInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/gui/ProducerInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/repository/GenreRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/repository/GenreRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Movie Manager/repository/ProducerRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie Manager/repository/ProducerRepository.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,11 +70,15 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Downloads/postgresql-42.7.0.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/parad/OneDrive/Desktop&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -87,7 +86,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;jformdesigner.java&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -124,7 +123,11 @@
       <workItem from="1701598195074" duration="19408000" />
       <workItem from="1702052642132" duration="3942000" />
       <workItem from="1702063570269" duration="5188000" />
-      <workItem from="1702117800022" duration="6641000" />
+      <workItem from="1702117800022" duration="6920000" />
+      <workItem from="1702125703461" duration="288000" />
+      <workItem from="1702126004608" duration="917000" />
+      <workItem from="1704212178654" duration="183000" />
+      <workItem from="1704474431280" duration="1292000" />
     </task>
     <task id="LOCAL-00001" summary="add project to github">
       <option name="closed" value="true" />
@@ -174,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701619624093</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="implement modify button with specific methods;&#10;rework login frame;&#10;add toStringLine to print line by line movie parameters;">
+      <option name="closed" value="true" />
+      <created>1702124633863</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1702124633863</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,7 +208,8 @@
     <MESSAGE value="add icon image for app;&#10;add movie trailer for Inception;&#10;add DirectorRepository &amp; ProducerRepository with get from db methods;&#10;add getMoviesName method;&#10;add getMoviesByDirectorName, getMoviesByProducer &amp; getMovieByTitle methods;&#10;add ProducerInterface, ActorInterface &amp; MovieInterface;&#10;add support to Tree for movies, directors, producers;&#10;add toStringTable method for Movie class;&#10;add displayTable method for GenreInterface class;&#10;now app displays tables for genres;&#10;add playVideo method;&#10;add displayButton method for MovieInterface;&#10;now app displays movies details and play button by selecting a movie;" />
     <MESSAGE value="added PageStartPanel class to handle add, modify, create a movie and create raport situations;&#10;added deleteFromDatabase method for MovieRepository class;&#10;added DeleteFrame &amp; DeletePanel class;&#10;added actionListener for delete button;&#10;rework getMovieIDByTitle method;&#10;added addAll method for MovieManager;&#10;added getMovies method;&#10;added insert methods for movies, persons, genres &amp; producers;&#10;added AddFrame &amp; AddPanel with labels, fields and buttons with action listeners;" />
     <MESSAGE value="deleted debugging prints;" />
-    <option name="LAST_COMMIT_MESSAGE" value="deleted debugging prints;" />
+    <MESSAGE value="implement modify button with specific methods;&#10;rework login frame;&#10;add toStringLine to print line by line movie parameters;" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement modify button with specific methods;&#10;rework login frame;&#10;add toStringLine to print line by line movie parameters;" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
