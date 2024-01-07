@@ -1,4 +1,6 @@
-package app;
+package utility;
+
+import entity.Movie;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -6,10 +8,13 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.Date;
 
-public class MovieManager {
+/**
+ * provides a method to create a movie report
+ *
+ * @author Simion Dragos Ionut
+ */
+public class ReportCreator {
     private final List<Movie> movieCollection = new ArrayList<>();
     public void addMovie(Movie movie){
         movieCollection.add(movie);
@@ -22,19 +27,19 @@ public class MovieManager {
     }
 
     /**
-     * creates a report file containing movie information sorted by genre, title, and rating
+     * creates a report based on the movie collection and writes it to the specified file
      *
-     * @param fileName the name of the file to be created
-     * @return true if the report file was successfully created; false otherwise
+     * @param fileName The name of the file where the report will be written
+     * @return true if the report is successfully created and written; false otherwise
      */
-    public boolean createRaport(String fileName){
+    public boolean createReport(String fileName){
         try(PrintWriter writer = new PrintWriter(new FileWriter(fileName))){
-            List<Movie> raport = movieCollection.stream()
+            List<Movie> report = movieCollection.stream()
                     .sorted(Comparator.comparing(Movie::getGenre)
                         .thenComparing(Movie::getTitle)
                             .thenComparing(Movie::getRating))
-                            .collect(Collectors.toList());
-        for(Movie movie : raport){
+                            .toList();
+        for(Movie movie : report){
             writer.println(movie.toString());
             writer.println("");
         }

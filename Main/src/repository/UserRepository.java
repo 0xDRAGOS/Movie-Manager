@@ -5,18 +5,23 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * provides a method to check validity of a username and password in database
+ *
+ * @author Simion Dragos Ionut
+ */
 public class UserRepository{
-    private final DatabaseConnection dbCon = new DatabaseConnection();
+    private final DatabaseConnection databaseConnection = new DatabaseConnection();
 
     /**
-     * validates a user by checking if the provided username and password match any records in the database
+     * checks the validity of a username and password combination in database
      *
-     * @param username the username of the user to validate
-     * @param password the password of the user to validate
-     * @return true if the provided username and password match a record in the database; false otherwise
+     * @param username the username to be validated.
+     * @param password the password to be validated.
+     * @return         true if the username and password combination is valid; false otherwise
      */
     public boolean isValid(String username, String password) {
-        Connection con = dbCon.connect();
+        Connection con = databaseConnection.connect();
         if (con != null) {
             String query = "SELECT COUNT(*) FROM users WHERE username = ? AND password = ?";
             try (PreparedStatement pstmt = con.prepareStatement(query)) {

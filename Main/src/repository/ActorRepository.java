@@ -7,11 +7,18 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * provides a method to get a list of distinct actor names from database
+ *
+ * @author Simion Dragos Ionut
+ */
 public class ActorRepository {
     private final DatabaseConnection databaseConnection = new DatabaseConnection();
 
     /**
-     * @return a List of String representing the full names of distinct actors
+     * retrieves a list of distinct actor names from the database
+     *
+     * @return a List of Strings containing actor names
      */
     public List<String> getActors(){
         List<String> actors = new ArrayList<>();

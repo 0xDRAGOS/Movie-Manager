@@ -1,5 +1,10 @@
-package app;
+package entity;
 
+/**
+ * provides methods for creating an user, getters and setters
+ *
+ * @author Simion Dragos Ionut
+ */
 public class User {
     private String username;
     private String password;
@@ -8,6 +13,11 @@ public class User {
         this.username = username;
         this.password = password;
     }
+
+    /**
+     * getters and setters
+     *
+     */
 
     public String getUsername() {
         return username;

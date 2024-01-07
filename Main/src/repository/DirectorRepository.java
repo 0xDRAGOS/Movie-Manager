@@ -7,11 +7,18 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * provides a method to get a list of distinct director names from database
+ *
+ * @author Simion Dragos Ionut
+ */
 public class DirectorRepository {
     private final DatabaseConnection databaseConnection = new DatabaseConnection();
 
     /**
-     * @return a List of String representing the full names of distinct directors
+     * retrieves a list of distinct director names from the database
+     *
+     * @return a List of Strings containing actor names
      */
     public List<String> getDirectors(){
         List<String> directors = new ArrayList<>();
@@ -27,8 +34,6 @@ public class DirectorRepository {
                 }
             }
         }catch (SQLException e){
-            e.printStackTrace();
-        }catch (NullPointerException e){
             e.printStackTrace();
         }
         return directors;

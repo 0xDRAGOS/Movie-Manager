@@ -3,6 +3,11 @@ package gui;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * provides UI frame for modifying movies
+ *
+ * @author Simion Dragos Ionut
+ */
 public class ModifyFrame extends JFrame {
 
     public ModifyFrame(){
@@ -12,7 +17,7 @@ public class ModifyFrame extends JFrame {
 
         setTitle("Modify movie");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setLocationRelativeTo(null); //setting frame's location in the middle of the screen
+        setLocationRelativeTo(null); // setting frame's location in the middle of the screen
         pack();
         setVisible(true);
     }

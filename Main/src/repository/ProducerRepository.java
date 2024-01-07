@@ -4,11 +4,18 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * provides methods to handle producers situations with database
+ *
+ * @author Simion Dragos Ionut
+ */
 public class ProducerRepository{
     private final DatabaseConnection databaseConnection = new DatabaseConnection();
 
     /**
-     * @return a List of String representing producer names
+     * retrieves a list of distinct producer names from the database
+     *
+     * @return a List of Strings containing producer names
      */
     public List<String> getProducers(){
         List<String> producers = new ArrayList<>();
@@ -30,10 +37,10 @@ public class ProducerRepository{
     }
 
     /**
-     * inserts a new production company/producer into the database
+     * inserts a new producer into the database
      *
-     * @param name the name of the production company/producer to be inserted
-     * @return the ID of the newly inserted production company/producer; returns -1 if insertion fails
+     * @param name the name of the producer to be inserted
+     * @return     the ID of the inserted producer, or -1 if the insertion fails
      */
     public int insertIntoDatabase(String name){
         try(Connection connection = databaseConnection.connect()){
@@ -54,10 +61,10 @@ public class ProducerRepository{
     }
 
     /**
-     * checks if a production company/producer with the given name exists in the database.
+     * checks if a producer with the specified name already exists in the database
      *
-     * @param name the name of the production company/producer to check for existence
-     * @return true if the production company/producer exists in the database; false otherwise
+     * @param name the name of the producer to check for existence
+     * @return     true if the producer exists; false otherwise
      */
     public boolean exists(String name){
         try(Connection connection = databaseConnection.connect()){
@@ -79,8 +86,10 @@ public class ProducerRepository{
     }
 
     /**
-     * @param name the name of the production company/producer to retrieve the ID for
-     * @return the ID of the production company/producer; returns -1 if not found
+     * gets the ID of a producer with the specified name
+     *
+     * @param name the name of the producer
+     * @return     the ID of the producer, or -1 if not found
      */
     public int getProducerID(String name) {
         try (Connection connection = databaseConnection.connect()) {
@@ -102,11 +111,11 @@ public class ProducerRepository{
     }
 
     /**
-     * modifies the name of a production company/producer in the database
+     * modifies the name of a producer in the database
      *
-     * @param name    the current name of the production company/producer
-     * @param newName the new name to set for the production company/producer
-     * @return true if the modification was successful; false otherwise
+     * @param name    the current name of the producer
+     * @param newName the new name for the producer
+     * @return true if the modification is successful; false otherwise
      */
     public boolean modifyProducer(String name, String newName){
         try(Connection connection = databaseConnection.connect()){

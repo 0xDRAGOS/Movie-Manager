@@ -9,6 +9,11 @@ import javax.swing.tree.TreePath;
 import java.awt.*;
 import java.util.List;
 
+/**
+ * provides UI panel for displaying a tree structure
+ *
+ * @author Simion Dragos Ionut
+ */
 public class TreePanel extends JPanel {
     private final JTree tree;
     public TreePanel() {
@@ -65,16 +70,18 @@ public class TreePanel extends JPanel {
     }
 
     /**
-     * adds a TreeSelectionListener to the tree component
+     * adds a TreeSelectionListener to the JTree component
      *
-     * @param listener the TreeSelectionListener to be added to the tree
+     * @param listener the TreeSelectionListener to be added
      */
     public void addTreeSelectionListener(TreeSelectionListener listener){
         tree.addTreeSelectionListener(listener);
     }
 
     /**
-     * @return the TreePath representing the selected path in the tree, or null if nothing is selected
+     * gets the selected TreePath from the JTree component
+     *
+     * @return the selected TreePath
      */
     public TreePath getSelectedPath(){
         return tree.getSelectionPath();

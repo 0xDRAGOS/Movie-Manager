@@ -1,19 +1,24 @@
 package repository;
 
-import app.Movie;
+import entity.Movie;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * provides methods to handle movies situations with database
+ *
+ * @author Simion Dragos Ionut
+ */
 public class MovieRepository {
     private final DatabaseConnection databaseConnection = new DatabaseConnection();
 
     /**
-     * loads the actors for a given movie ID
+     * loads the actors for a given movie ID from the database
      *
-     * @param movieID The ID of the movie to retrieve actors for
-     * @return A string containing the names of the actors in the movie
+     * @param movieID the ID of the movie
+     * @return        a string containing the names of actors for the movie
      */
     public String loadActors(int movieID) {
         String actors = "";
@@ -37,10 +42,10 @@ public class MovieRepository {
     }
 
     /**
-     * loads the director for a given movie ID
+     * loads the director for a given movie ID from the database
      *
-     * @param movieID The ID of the movie to retrieve the director for
-     * @return A string containing the name of the director
+     * @param movieID the ID of the movie
+     * @return        a string containing the name of the director for the movie
      */
     public String loadDirector(int movieID) {
         String director = null;
@@ -63,10 +68,10 @@ public class MovieRepository {
     }
 
     /**
-     * loads the producer for a given movie ID
+     * loads the producer for a given movie ID from the database
      *
-     * @param movieID The ID of the movie to retrieve the producer for
-     * @return A string containing the name of the producer
+     * @param movieID the ID of the movie
+     * @return        a string containing the name of the director for the movie
      */
     public String loadProducer(int movieID) {
         String producer = null;
@@ -89,10 +94,10 @@ public class MovieRepository {
     }
 
     /**
-     * loads the genre for a given movie ID
+     * loads the genre for a given movie ID from the database
      *
-     * @param movieID The ID of the movie to retrieve the genre for
-     * @return A string containing the genre of the movie
+     * @param movieID the ID of the movie
+     * @return        a string containing the name of the director for the movie
      */
     public String loadGenre(int movieID) {
         String genre = null;
@@ -115,10 +120,10 @@ public class MovieRepository {
     }
 
     /**
-     * retrieves the movie ID based on its title
+     * retrieves the movie ID for a given movie title from the database
      *
-     * @param movieTitle The title of the movie
-     * @return The ID of the movie, or -1 if not found
+     * @param movieTitle the title of the movie
+     * @return           the movie ID; -1 otherwise
      */
     public int getMovieIDByTitle(String movieTitle) {
         try (Connection connection = databaseConnection.connect()) {
@@ -140,7 +145,9 @@ public class MovieRepository {
     }
 
     /**
-     * @return String List of movie titles
+     * retrieves a list of movie names from the database
+     *
+     * @return a List of Strings containing movie names
      */
     public List<String> getMoviesName() {
         List<String> moviesName = new ArrayList<>();
@@ -162,7 +169,9 @@ public class MovieRepository {
     }
 
     /**
-     * @return Movie List of all movies from the database
+     * retrieves a list of movies from the database
+     *
+     * @return a List of Movie objects containing movie details
      */
     public List<Movie> getMovies() {
         List<Movie> movies = new ArrayList<>();
@@ -195,8 +204,10 @@ public class MovieRepository {
     }
 
     /**
-     * @param movieTitle the title of the movie to search for
-     * @return Movie List matching the given title, or null if not found
+     * retrieves a list of movies by the specified movie title from the database
+     *
+     * @param movieTitle the title of the movie
+     * @return           a List of Movie objects containing details of the matching movies
      */
     public List<Movie> getMoviesByTitle(String movieTitle) {
         List<Movie> movies = new ArrayList<>();
@@ -229,8 +240,10 @@ public class MovieRepository {
     }
 
     /**
-     * @param movieTitle the title of the movie to search for
-     * @return Movie object matching the given title, or null if not found
+     * retrieves a single movie by the specified movie title from the database
+     *
+     * @param movieTitle the title of the movie
+     * @return           a Movie object containing details of the matching movie, or null if not found
      */
     public Movie getMovieByTitle(String movieTitle) {
         try (Connection connection = databaseConnection.connect()) {
@@ -258,13 +271,15 @@ public class MovieRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return null;  // Return null if no movie is found
     }
 
     /**
-     * @param firstName The first name of the actor
-     * @param lastName  The last name of the actor
-     * @return Movie List featuring the specified actor
+     * retrieves a list of movies by the specified actor's first and last name from the database
+     *
+     * @param firstName the first name of the actor
+     * @param lastName  the last name of the actor
+     * @return          a List of Movie objects containing details of the movies featuring the specified actor
      */
     public List<Movie> getMoviesByActorName(String firstName, String lastName) {
         List<Movie> movies = new ArrayList<>();
@@ -298,9 +313,11 @@ public class MovieRepository {
     }
 
     /**
-     * @param firstName The first name of the actor
-     * @param lastName  The last name of the actor
-     * @return Movie List featuring the specified director
+     * retrieves a list of movies by the specified director's first and last name from the database
+     *
+     * @param firstName the first name of the director
+     * @param lastName  the last name of the director
+     * @return          a List of Movie objects containing details of the movies directed by the specified person
      */
     public List<Movie> getMoviesByDirectorName(String firstName, String lastName) {
         List<Movie> movies = new ArrayList<>();
@@ -335,8 +352,10 @@ public class MovieRepository {
     }
 
     /**
-     * @param genreName the name of the genre to search for movies
-     * @return Movie List featuring the specified actor
+     * retrieves a list of movies by the specified genre from the database
+     *
+     * @param genreName yhe name of the genre
+     * @return          a List of Movie objects containing details of the movies belonging to the specified genre
      */
     public List<Movie> getMoviesByGenre(String genreName) {
         List<Movie> movies = new ArrayList<>();
@@ -369,8 +388,10 @@ public class MovieRepository {
     }
 
     /**
-     * @param producerName the name of the producer to search for movies
-     * @return Movie List featuring the specified actor
+     * retrieves a list of movies produced by the specified production company from the database
+     *
+     * @param producerName the name of the production company
+     * @return             a List of Movie objects containing details of the movies produced by the specified company
      */
     public List<Movie> getMoviesByProducer(String producerName) {
         List<Movie> movies = new ArrayList<>();
@@ -403,10 +424,10 @@ public class MovieRepository {
     }
 
     /**
-     * deletes a movie from the database based on its title
+     * deletes a movie and its associated data from the database
      *
      * @param movieTitle the title of the movie to be deleted
-     * @return true if the movie was successfully deleted, otherwise false
+     * @return true if the movie is successfully deleted; false otherwise
      */
     public boolean deleteFromDatabase(String movieTitle) {
         try (Connection connection = databaseConnection.connect()) {
@@ -477,12 +498,12 @@ public class MovieRepository {
     }
 
     /**
-     * inserts a new movie entry into the database
+     * inserts a new movie into the database
      *
-     * @param title      the title of the new movie
-     * @param launchDate the launch date of the new movie
-     * @param rating     the rating of the new movie
-     * @return the ID of the inserted movie or -1 if insertion fails
+     * @param title      the title of the movie
+     * @param launchDate the launch date of the movie
+     * @param rating     the rating of the movie
+     * @return           the auto-generated ID of the inserted movie, or -1 if insertion fails
      */
     public int insertIntoDatabase(String title, Date launchDate, float rating) {
         try (Connection connection = databaseConnection.connect()) {
@@ -509,11 +530,11 @@ public class MovieRepository {
     }
 
     /**
-     * inserts a record into the database indicating a new actor for a specific movie
+     * inserts a record into the database associating a movie with an actor
      *
-     * @param movieID  the ID of the movie associated with the new actor
-     * @param personID the ID of the actor to be added to the movie
-     * @return true if the actor was successfully inserted for the movie; otherwise false
+     * @param movieID  the ID of the movie
+     * @param personID the ID of the person (actor)
+     * @return         true if the association is successfully inserted; false otherwise
      */
     public boolean insertMovieActorIntoDatabase(int movieID, int personID){
         try(Connection connection = databaseConnection.connect()){
@@ -534,11 +555,11 @@ public class MovieRepository {
     }
 
     /**
-     * inserts a record into the database indicating a new genre for a specific movie
+     * inserts a record into the database associating a movie with a genre
      *
-     * @param movieID the ID of the movie associated with the new genre
-     * @param genreID the ID of the genre to be added to the movie
-     * @return true if the genre was successfully inserted for the movie; otherwise false
+     * @param movieID the ID of the movie
+     * @param genreID the ID of the genre
+     * @return        true if the association is successfully inserted; false otherwise
      */
     public boolean insertMovieGenreIntoDatabase(int movieID, int genreID){
         try(Connection connection = databaseConnection.connect()){
@@ -559,11 +580,11 @@ public class MovieRepository {
     }
 
     /**
-     * inserts a record into the database indicating a new director for a specific movie
+     * inserts a record into the database associating a movie with a director
      *
-     * @param movieID  the ID of the movie associated with the new director
-     * @param personID the ID of the director to be added to the movie
-     * @return true if the director was successfully inserted for the movie; otherwise false
+     * @param movieID  the ID of the movie
+     * @param personID the ID of the person (director)
+     * @return         true if the association is successfully inserted; false otherwise
      */
     public boolean insertMovieDirectorIntoDatabase(int movieID, int personID){
         try(Connection connection = databaseConnection.connect()){
@@ -584,11 +605,11 @@ public class MovieRepository {
     }
 
     /**
-     * inserts a record into the database indicating a new producer for a specific movie
+     * inserts a record into the database associating a movie with a producer
      *
-     * @param movieID    the ID of the movie associated with the new producer
-     * @param producerID the ID of the producer to be added to the movie
-     * @return true if the producer was successfully inserted for the movie; otherwise false
+     * @param movieID    the ID of the movie
+     * @param producerID the ID of the producer
+     * @return           true if the association is successfully inserted; false otherwise
      */
     public boolean insertMovieProducerIntoDatabase(int movieID, int producerID){
         try(Connection connection = databaseConnection.connect()){
@@ -609,13 +630,13 @@ public class MovieRepository {
     }
 
     /**
-     * modifies a movie's details based on its title
+     * modifies the details of a movie in the database by title
      *
-     * @param movieTitle       the title of the movie to be modified
-     * @param newMovieTitle    the updated title for the movie
-     * @param newMovieLaunchDate the updated launch date for the movie
-     * @param newMovieRating   the updated rating for the movie
-     * @return true if the movie details were successfully modified; otherwise false
+     * @param movieTitle         the title of the movie to be modified
+     * @param newMovieTitle      the new title for the movie
+     * @param newMovieLaunchDate the new launch date for the movie
+     * @param newMovieRating     the new rating for the movie
+     * @return                   true if the modification is successful; false otherwise
      */
     public boolean modifyMovieByTitle(String movieTitle, String newMovieTitle, Date newMovieLaunchDate, Float newMovieRating){
         try(Connection connection = databaseConnection.connect()){
@@ -639,11 +660,11 @@ public class MovieRepository {
     }
 
     /**
-     * modifies an actor associated with a specific movie
+     * modifies the association between a movie and an actor in the database
      *
-     * @param movieID  the ID of the movie to which the actor is linked
-     * @param personID the ID of the new actor to be associated with the movie
-     * @return true if the modification was successful; otherwise false
+     * @param movieID  the ID of the movie
+     * @param personID the ID of the person (actor)
+     * @return         true if the modification is successful; false otherwise
      */
     public boolean modifyActorMovie(int movieID, int personID){
         try(Connection connection = databaseConnection.connect()){
@@ -665,11 +686,11 @@ public class MovieRepository {
     }
 
     /**
-     * modifies a director associated with a specific movie
+     * modifies the association between a movie and a director in the database
      *
-     * @param movieID  the ID of the movie to which the director is linked
-     * @param personID the ID of the new director to be associated with the movie
-     * @return true if the modification was successful; otherwise false
+     * @param movieID  the ID of the movie
+     * @param personID the ID of the person (director)
+     * @return         true if the modification is successful; false otherwise
      */
     public boolean modifyDirectorMovie(int movieID, int personID){
         try(Connection connection = databaseConnection.connect()){
@@ -691,11 +712,11 @@ public class MovieRepository {
     }
 
     /**
-     * modifies the genre of a specific movie
+     * modifies the association between a movie and a genre in the database
      *
-     * @param movieID    the ID of the movie whose genre is to be updated
-     * @param newGenreID the ID of the new genre to associate with the movie
-     * @return true if the modification was successful; otherwise false
+     * @param movieID     the ID of the movie
+     * @param newGenreID  the ID of the new genre
+     * @return            true if the modification is successful; false otherwise
      */
     public boolean modifyGenreMovie(int movieID, int newGenreID){
         try(Connection connection = databaseConnection.connect()){
@@ -717,11 +738,11 @@ public class MovieRepository {
     }
 
     /**
-     * modifies the producer associated with a specific movie
+     * modifies the association between a movie and a producer in the database
      *
-     * @param movieID    the ID of the movie to which the producer is linked
-     * @param producerID the ID of the new producer to be associated with the movie
-     * @return true if the modification was successful; otherwise false
+     * @param movieID    the ID of the movie
+     * @param producerID the ID of the producer
+     * @return           true if the modification is successful; false otherwise
      */
     public boolean modifyProducerMovie(int movieID, int producerID){
         try(Connection connection = databaseConnection.connect()){

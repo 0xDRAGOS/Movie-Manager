@@ -13,6 +13,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * provides UI panel for adding movies
+ *
+ * @author Simion Dragos Ionut
+ */
 public class AddPanel extends JPanel {
     private final MovieRepository movieRepository;
     private final GenreRepository genreRepository;
@@ -86,14 +91,14 @@ public class AddPanel extends JPanel {
                 String director = directorField.getText();
                 String producer = producerField.getText();
 
-                // input validation
+                // Input validation
                 if (title.isEmpty() || launchDateString.isEmpty() || ratingText.isEmpty() || genre.isEmpty()
                         || actors.isEmpty() || director.isEmpty() || producer.isEmpty()) {
                     JOptionPane.showMessageDialog(AddPanel.this, "Empty field/s.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
-                // parse rating after validation
+                // Parse rating after validation
                 float rating;
                 try {
                     rating = Float.parseFloat(ratingText);
@@ -113,7 +118,7 @@ public class AddPanel extends JPanel {
                 int movieID = movieRepository.insertIntoDatabase(title, new java.sql.Date(launchDate.getTime()), rating);
 
                 if (movieID != -1) {
-                    // handle actors
+                    // Handle actors
                     String[] actorsArray = actors.split(",\\s*");
                     for (String actor : actorsArray) {
                         int index = actor.indexOf(" ");
@@ -126,21 +131,21 @@ public class AddPanel extends JPanel {
                         movieRepository.insertMovieActorIntoDatabase(movieID, personID);
                     }
 
-                    // handle genre
+                    // Handle genre
                     if (!genreRepository.exists(genre)) {
                         genreRepository.insertIntoDatabase(genre);
                     }
                     int genreID = genreRepository.getGenreID(genre);
                     movieRepository.insertMovieGenreIntoDatabase(movieID, genreID);
 
-                    // handle producer
+                    // Handle producer
                     if (!producerRepository.exists(producer)) {
                         producerRepository.insertIntoDatabase(producer);
                     }
                     int producerID = producerRepository.getProducerID(producer);
                     movieRepository.insertMovieProducerIntoDatabase(movieID, producerID);
 
-                    // handle director
+                    // Handle director
                     int index = director.indexOf(" ");
                     String directorFirstName = director.substring(0, index);
                     String directorLastName = director.substring(index + 1);
@@ -170,4 +175,5 @@ public class AddPanel extends JPanel {
             }
         });
     }
+
 }

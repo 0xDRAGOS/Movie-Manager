@@ -1,6 +1,6 @@
 package gui;
 
-import app.Movie;
+import entity.Movie;
 import repository.GenreRepository;
 import repository.MovieRepository;
 import repository.PersonRepository;
@@ -14,6 +14,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * provides UI panel for modifying movies
+ *
+ * @author Simion Dragos Ionut
+ */
 public class ModifyPanel extends JPanel {
     private final MovieRepository movieRepository;
     private final GenreRepository genreRepository;
@@ -167,21 +172,21 @@ public class ModifyPanel extends JPanel {
                                     movieRepository.modifyActorMovie(movieID, personID);
                                 }
 
-                                // Handle genre
+                                // handle genre
                                 if (!genreRepository.exists(genre)) {
                                     genreRepository.insertIntoDatabase(genre);
                                 }
                                 int genreID = genreRepository.getGenreID(genre);
                                 movieRepository.modifyGenreMovie(movieID, genreID);
 
-                                // Handle producer
+                                // handle producer
                                 if (!producerRepository.exists(producer)) {
                                     producerRepository.insertIntoDatabase(producer);
                                 }
                                 int producerID = producerRepository.getProducerID(producer);
                                 movieRepository.modifyProducerMovie(movieID, producerID);
 
-                                // Handle director
+                                // handle director
                                 int index = director.indexOf(" ");
                                 String directorFirstName = director.substring(0, index);
                                 String directorLastName = director.substring(index + 1);

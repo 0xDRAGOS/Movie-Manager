@@ -1,5 +1,6 @@
 package gui;
 
+import entity.User;
 import repository.UserRepository;
 
 import javax.swing.*;
@@ -7,6 +8,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * provides UI panel to login to application
+ *
+ * @author Simion Dragos Ionut
+ */
 public class LoginPanel extends JPanel {
     private final JTextField usernameField;
     private final JPasswordField passwordField;
@@ -29,8 +35,10 @@ public class LoginPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 String username = usernameField.getText();
                 String password = passwordField.getText();
+
+                User user = new User(username, password);
                 UserRepository userRep = new UserRepository();
-                if(userRep.isValid(username, password)){
+                if(userRep.isValid(user.getUsername(), user.getPassword())){
                     JOptionPane.showMessageDialog(null, "Logged in successfully!");
                     loginFrame.closeFrame();
                     MainFrame mainFrame = new MainFrame();

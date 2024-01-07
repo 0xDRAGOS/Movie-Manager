@@ -3,11 +3,15 @@ package gui;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * provides UI frame for adding movies
+ *
+ * @author Simion Dragos Ionut
+ */
 public class AddFrame extends JFrame {
-    private AddPanel addPanel;
     public AddFrame(){
         setLayout(new FlowLayout());
-        addPanel = new AddPanel();
+        AddPanel addPanel = new AddPanel();
         add(addPanel);
 
         setTitle("Add movie");

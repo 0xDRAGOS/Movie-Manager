@@ -1,23 +1,26 @@
-package gui;
+package utility;
 
-import app.Movie;
+import entity.Movie;
 import repository.MovieRepository;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.util.List;
 
-public class GenreInterface implements Displayable{
-    MovieRepository movieRepository = new MovieRepository();
+/**
+ * provides a method to display movies based on genre in a JTextArea/JTable
+ *
+ * @author Simion Dragos Ionut
+ */
+public class GenreDisplay implements Displayable{
+    private final MovieRepository movieRepository = new MovieRepository();
 
     /**
-     * displays movie information in the provided JTextArea based on a given genre
+     * displays movies in the provided JTextArea based on a genre condition
      *
-     * @param textArea the JTextArea where movie information will be displayed
-     * @param stringCondition the genre used to filter and display movie information
+     * @param textArea       the JTextArea where the movie information will be displayed
+     * @param stringCondition the condition specifying the actor name
      */
-    @Override
     public void display(JTextArea textArea, String stringCondition) {
         textArea.setText("");
         List<Movie> movies = movieRepository.getMoviesByGenre(stringCondition);
@@ -27,10 +30,10 @@ public class GenreInterface implements Displayable{
     }
 
     /**
-     * displays movie information in the provided JTable based on a given genre
+     * displays movies in the provided JTable based on a genre condition
      *
-     * @param moviesTable the JTable where movie information will be displayed
-     * @param stringCondition the genre used to filter and display movie information
+     * @param moviesTable       the JTable where the movie information will be displayed
+     * @param stringCondition the condition specifying the actor name
      */
     public void displayTable(JTable moviesTable, String stringCondition){
         DefaultTableModel tableModel = new DefaultTableModel();

@@ -4,11 +4,18 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * provides methods to handle genres situations with database
+ *
+ * @author Simion Dragos Ionut
+ */
 public class GenreRepository {
     private final DatabaseConnection databaseConnection = new DatabaseConnection();
 
     /**
-     * @return a List of String representing genres
+     * retrieves a list of distinct genres from the database
+     *
+     * @return a List of Strings containing actor names
      */
     public List<String> getGenres(){
         List<String> genres = new ArrayList<>();
@@ -34,8 +41,9 @@ public class GenreRepository {
      * inserts a new genre into the database
      *
      * @param name the name of the genre to be inserted
+     * @return     the ID of the inserted genre; -1 otherwise
      */
-    public void insertIntoDatabase(String name){
+    public int insertIntoDatabase(String name){
         try(Connection connection = databaseConnection.connect()){
             String query = "INSERT INTO genres (name) VALUES (?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)){
@@ -43,20 +51,21 @@ public class GenreRepository {
                 preparedStatement.executeUpdate();
                 try(ResultSet resultSet = preparedStatement.getGeneratedKeys()){
                     if(resultSet.next()){
-                        resultSet.getInt(1);
+                        return resultSet.getInt(1);
                     }
                 }
             }
         }catch (SQLException e){
             e.printStackTrace();
         }
+        return -1;
     }
 
     /**
-     * checks if a genre with the given name exists in the database
+     * checks if a genre with the specified name already exists in the database
      *
      * @param name the name of the genre to check for existence
-     * @return true if the genre exists in the database; false otherwise
+     * @return     true if the genre exists; false otherwise
      */
     public boolean exists(String name){
         try(Connection connection = databaseConnection.connect()){
@@ -78,8 +87,10 @@ public class GenreRepository {
     }
 
     /**
-     * @param name the name of the genre to retrieve the ID for
-     * @return the ID of the genre; returns -1 if the genre is not found
+     * gets the ID of a genre with the specified name
+     *
+     * @param name the name of the genre
+     * @return     the ID of the genre; -1 otherwise
      */
     public int getGenreID(String name) {
         try (Connection connection = databaseConnection.connect()) {
@@ -104,8 +115,8 @@ public class GenreRepository {
      * modifies the name of a genre in the database
      *
      * @param name    the current name of the genre
-     * @param newName the new name to set for the genre
-     * @return true if the modification was successful; false otherwise
+     * @param newName the new name for the genre
+     * @return        true if the modification is successful; false otherwise
      */
     public boolean modifyGenre(String name, String newName){
         try(Connection connection = databaseConnection.connect()){

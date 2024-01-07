@@ -7,6 +7,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * provides UI panel for deleting movies
+ *
+ * @author Simion Dragos Ionut
+ */
 public class DeletePanel extends JPanel {
     private final MovieRepository movieRepository;
     private final JTextField movieTitleField;

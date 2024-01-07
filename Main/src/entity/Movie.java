@@ -1,12 +1,17 @@
-package app;
+package entity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+/**
+ * provides methods for creating a movie, getters, setters, to string and others for debugging
+ *
+ * @author Simion Dragos Ionut
+ */
 public class Movie {
-    private final int MAX_MOVIE_TITLE = 100;
+    //private final int MAX_MOVIE_TITLE = 100;
     private String title;
     private String genre;
     private Date launchDate;
@@ -27,7 +32,9 @@ public class Movie {
     }
 
     /**
-     * @return String of the movie information
+     * converts the movie details to a formatted string
+     *
+     * @return formatted string representation of movie details
      */
     public String toString(){
         return String.format("Name: %s, Category: %s, Launch date: %s, Rating: %f, Actors: %s, Director: %s, Producer: %s\n",
@@ -35,7 +42,9 @@ public class Movie {
     }
 
     /**
-     * @return String of the movie information line by line
+     * converts the movie details to a formatted string suitable for a line by line
+     *
+     * @return formatted string representation of movie details for a line by line representation
      */
     public String toStringLine(){
         return String.format("Name: %s \nCategory: %s \nLaunch date: %s \nRating: %f \nActors: %s \nDirector: %s \nProducer: %s\n",
@@ -43,11 +52,18 @@ public class Movie {
     }
 
     /**
-     * @return String array with information in a table format
+     * converts the movie details to an array of strings suitable for table representation
+     *
+     * @return an Array of strings representing movie details for a table
      */
     public String[] toStringTable(){
         return new String[]{title, genre, launchDate.toString(), String.valueOf(rating), actors, director, producer};
     }
+
+    /**
+     * getters and setters
+     */
+
     public String getTitle() {
         return title;
     }
@@ -105,7 +121,7 @@ public class Movie {
     }
 
     /**
-     * read a movie from keyboard (used for debugging)
+     * reads movie details from the console (used for debugging)
      */
     public void readMovie(){
         Date launchDate;
@@ -140,7 +156,7 @@ public class Movie {
     }
 
     /**
-     * display a movie from keyboard (used for debugging)
+     * displays movie details to the console (used for debugging)
      */
     public void displayMovie(){
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

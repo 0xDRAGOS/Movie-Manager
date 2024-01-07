@@ -1,7 +1,7 @@
 package gui;
 
-import app.Movie;
-import app.MovieManager;
+import entity.Movie;
+import utility.ReportCreator;
 import repository.MovieRepository;
 
 import java.awt.event.KeyEvent;
@@ -12,41 +12,42 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * provides UI panel for add, modify, delete, create report buttons and menu
+ *
+ * @author Simion Dragos Ionut
+ */
 public class PageStartPanel extends JPanel {
     private final MovieRepository movieRepository;
-    private final MovieManager movieManager;
+    private final ReportCreator reportCreator;
 
     public PageStartPanel(){
         setLayout(new FlowLayout(FlowLayout.LEFT));
 
         movieRepository = new MovieRepository();
-        movieManager = new MovieManager();
-        JTextArea textArea = new JTextArea("Movie manager: ");
+        reportCreator = new ReportCreator();
         JButton addMovieButton = new JButton("Add");
         JButton modifyMovieButton = new JButton("Modify");
         JButton deleteMovieButton = new JButton("Delete");
-        JButton createRaportButton = new JButton("Create Raport");
-
-        textArea.setEditable(false);
+        JButton createReportButton = new JButton("Create Report");
 
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("Menu");
         JMenuItem addMenuItem = new JMenuItem("Add");
         JMenuItem modifyMenuItem = new JMenuItem("Modify");
         JMenuItem deleteMenuItem = new JMenuItem("Delete");
-        JMenuItem createRaportMenuItem = new JMenuItem("Create Raport");
+        JMenuItem createReportMenuItem = new JMenuItem("Create Report");
 
         menu.add(addMenuItem);
         menu.add(modifyMenuItem);
         menu.add(deleteMenuItem);
-        menu.add(createRaportMenuItem);
+        menu.add(createReportMenuItem);
         menuBar.add(menu);
-
         add(menuBar);
         add(addMovieButton);
         add(modifyMovieButton);
         add(deleteMovieButton);
-        add(createRaportButton);
+        add(createReportButton);
 
         // menu items
         addMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
@@ -73,17 +74,17 @@ public class PageStartPanel extends JPanel {
             }
         });
 
-        createRaportMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
-        createRaportMenuItem.addActionListener(new ActionListener() {
+        createReportMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
+        createReportMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 List<Movie> movieList = movieRepository.getMovies();
-                movieManager.addAll(movieList);
+                reportCreator.addAll(movieList);
 
-                if(!movieManager.createRaport("Raports\\movies_raport.txt")){
-                    JOptionPane.showMessageDialog(PageStartPanel.this, "Could not create movie raport.", "Error", JOptionPane.ERROR_MESSAGE);
+                if(!reportCreator.createReport("Main/reports/movies_report.txt")){
+                    JOptionPane.showMessageDialog(PageStartPanel.this, "Could not create movie report.", "Error", JOptionPane.ERROR_MESSAGE);
                 }else{
-                    JOptionPane.showMessageDialog(PageStartPanel.this, "Movie raport created successfully.", "", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(PageStartPanel.this, "Movie report created successfully.", "", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });
@@ -110,16 +111,16 @@ public class PageStartPanel extends JPanel {
             }
         });
 
-        createRaportButton.addActionListener(new ActionListener() {
+        createReportButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 List<Movie> movieList = movieRepository.getMovies();
-                movieManager.addAll(movieList);
+                reportCreator.addAll(movieList);
 
-                if(!movieManager.createRaport("Raports\\movies_raport.txt")){
-                    JOptionPane.showMessageDialog(PageStartPanel.this, "Could not create movie raport.", "Error", JOptionPane.ERROR_MESSAGE);
+                if(!reportCreator.createReport("Main/reports/movies_report.txt")){
+                    JOptionPane.showMessageDialog(PageStartPanel.this, "Could not create movie report.", "Error", JOptionPane.ERROR_MESSAGE);
                 }else{
-                    JOptionPane.showMessageDialog(PageStartPanel.this, "Movie raport created successfully.", "", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(PageStartPanel.this, "Movie report created successfully.", "", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });

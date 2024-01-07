@@ -1,10 +1,17 @@
 package gui;
 
+import utility.*;
+
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 import java.awt.*;
 
+/**
+ * provides main UI frame for application
+ *
+ * @author Simion Dragos Ionut
+ */
 public class MainFrame extends JFrame {
     private final TreePanel treePanel;
     private final JTextArea movieDetailsTextArea;
@@ -41,29 +48,29 @@ public class MainFrame extends JFrame {
                         switch (selectedNode.getParent().toString()){
                             case "Genres":
                                 rightPanel.add(moviesTable);
-                                GenreInterface genreInterface = new GenreInterface();
-                                genreInterface.displayTable(moviesTable, nodeName);
+                                GenreDisplay genreDisplay = new GenreDisplay();
+                                genreDisplay.displayTable(moviesTable, nodeName);
                                 break;
                             case "Movies":
                                 JPanel movieDetailsPlayPanel = new JPanel();
-                                MovieInterface movieInterface = new MovieInterface();
-                                movieInterface.displayButton(movieDetailsPlayPanel, nodeName);
+                                MovieDisplay movieDisplay = new MovieDisplay();
+                                movieDisplay.displayButton(movieDetailsPlayPanel, nodeName);
                                 rightPanel.add(movieDetailsPlayPanel);
                                 break;
                             case "Actors":
                                 rightPanel.add(movieDetailsTextArea);
-                                ActorInterface actorInterface = new ActorInterface();
-                                actorInterface.display(movieDetailsTextArea, nodeName);
+                                ActorDisplay actorDisplay = new ActorDisplay();
+                                actorDisplay.display(movieDetailsTextArea, nodeName);
                                 break;
                             case "Directors":
                                 rightPanel.add(movieDetailsTextArea);
-                                DirectorInterface directorInterface = new DirectorInterface();
-                                directorInterface.display(movieDetailsTextArea, nodeName);
+                                DirectorDisplay directorDisplay = new DirectorDisplay();
+                                directorDisplay.display(movieDetailsTextArea, nodeName);
                                 break;
                             case "Producers":
                                 rightPanel.add(movieDetailsTextArea);
-                                ProducerInterface producerInterface = new ProducerInterface();
-                                producerInterface.display(movieDetailsTextArea, nodeName);
+                                ProducerDisplay producerDisplay = new ProducerDisplay();
+                                producerDisplay.display(movieDetailsTextArea, nodeName);
                                 break;
                         }
                     }
@@ -76,7 +83,7 @@ public class MainFrame extends JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/images/icon.png")).getImage());
         setTitle("Movie Manager");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocationRelativeTo(null); //setting frame's location in the middle of the screen
+        setLocationRelativeTo(null); // setting frame's location in the middle of the screen
         setSize(800, 600);
         setVisible(true);
     }
